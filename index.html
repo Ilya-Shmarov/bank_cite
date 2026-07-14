@@ -208,12 +208,83 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .warning { color: var(--warn); font-weight: 700; }
 .empty { color: var(--muted); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
 .changes-panel { margin-top: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
-.changes-panel > summary { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; cursor: pointer; font-weight: 700; }
-.changes-panel > summary b { color: var(--accent); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
-.changes-panel .changes-app { padding: 0 14px 16px; }
+.changes-panel-summary { padding: 0; }
+.changes-panel-toggle {
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+}
+.changes-panel-toggle:hover,
+.changes-panel-toggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  outline-offset: -2px;
+  color: var(--accent);
+}
+.changes-panel-body { padding: 0 14px 16px; }
+.changes-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+.changes-hide-btn {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 9px 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+.changes-hide-btn:hover,
+.changes-hide-btn:focus-visible {
+  border-color: var(--accent);
+  outline: 2px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  outline-offset: 2px;
+}
+.changes-sticky-close {
+  position: sticky;
+  bottom: 12px;
+  z-index: 4;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+  margin-top: 14px;
+}
+.changes-sticky-close .changes-hide-btn {
+  pointer-events: auto;
+  box-shadow: 0 8px 22px rgba(23, 32, 42, 0.16);
+}
+.changes-panel:not(.is-open) .changes-sticky-close { display: none; }
+.changes-panel .changes-app { padding-top: 16px; }
 .changes-panel .changes-app h1 { font-size: clamp(24px, 4vw, 36px); }
 @media (max-width: 760px) {
   .changes-filters, .changes-app dl { grid-template-columns: 1fr; }
+  .changes-panel-body { padding-inline: 10px; }
+  .changes-panel-head { align-items: flex-start; flex-direction: column; padding-block: 10px; }
+  .changes-hide-btn { width: 100%; }
+  .changes-sticky-close { bottom: 8px; }
+  .changes-sticky-close .changes-hide-btn { width: auto; max-width: calc(100vw - 48px); }
 }
 </style>
 </head>
@@ -231,17 +302,27 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div><b>2026-07-14</b><span>дата данных</span></div>
       </div>
       
-      <details class="changes-panel">
-        <summary>
-          <span>Последние изменения</span>
-          <b>322</b>
-        </summary>
-        
+      <section class="changes-panel js-changes-panel" data-storage-key="sber_vs_changes_collapsed">
+        <div class="changes-panel-summary">
+          <button type="button" class="changes-panel-toggle js-changes-show"
+              aria-expanded="false">
+            Последние изменения · 322 событий · Показать
+          </button>
+        </div>
+        <div class="changes-panel-body js-changes-panel-body" hidden>
+          <div class="changes-panel-head">
+            <span>Последние изменения · 322 событий</span>
+            <button type="button" class="changes-hide-btn js-changes-hide"
+                aria-label="Скрыть раздел последних изменений">
+              Скрыть изменения
+            </button>
+          </div>
+          
     <section class="changes-app">
     <header class="changes-top">
       <p class="eyebrow">Премиальное банковское обслуживание</p>
       <h1>Изменения в премиальном обслуживании</h1>
-      <p class="updated">Последнее обновление: 14.07.2026 13:25</p>
+      <p class="updated">Последнее обновление: 14.07.2026 13:43</p>
       <div class="changes-stats">
         <span><b>7</b> банков</span>
         <span><b>322</b> изменений</span>
@@ -7412,7 +7493,14 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
       </section>
     </section>
     </section>
-      </details>
+          <div class="changes-sticky-close">
+            <button type="button" class="changes-hide-btn compact js-changes-hide"
+                aria-label="Скрыть раздел последних изменений">
+              Скрыть изменения ↑
+            </button>
+          </div>
+        </div>
+      </section>
     </section>
 
     <section class="pickers">
@@ -7507,6 +7595,52 @@ function initChangesApp(root) {
     if (filter) filter.addEventListener('change', () => applyChangeFilters(root));
   });
   applyChangeFilters(root);
+}
+
+function initChangesPanel(panel) {
+  if (!panel) return;
+  const key = panel.dataset.storageKey || 'changes_collapsed';
+  const showButton = panel.querySelector('.js-changes-show');
+  const body = panel.querySelector('.js-changes-panel-body');
+  const hideButtons = panel.querySelectorAll('.js-changes-hide');
+  const stored = getChangesPanelStorage(key);
+  const collapsed = stored === null ? true : stored !== 'false';
+
+  function setCollapsed(nextCollapsed, options = {}) {
+    body.hidden = nextCollapsed;
+    showButton.setAttribute('aria-expanded', String(!nextCollapsed));
+    panel.classList.toggle('is-open', !nextCollapsed);
+    setChangesPanelStorage(key, String(nextCollapsed));
+    if (nextCollapsed && options.scroll) {
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.setTimeout(() => showButton.focus({ preventScroll: true }), 260);
+    }
+    if (!nextCollapsed) {
+      initChangesApp(panel.querySelector('.changes-app'));
+    }
+  }
+
+  showButton.addEventListener('click', () => setCollapsed(false));
+  hideButtons.forEach((button) => {
+    button.addEventListener('click', () => setCollapsed(true, { scroll: true }));
+  });
+  setCollapsed(collapsed);
+}
+
+function getChangesPanelStorage(key) {
+  try {
+    return window.localStorage ? window.localStorage.getItem(key) : null;
+  } catch (_error) {
+    return null;
+  }
+}
+
+function setChangesPanelStorage(key, value) {
+  try {
+    if (window.localStorage) window.localStorage.setItem(key, value);
+  } catch (_error) {
+    // Storage can be unavailable in some embedded file viewers.
+  }
 }
 
 const APP_DATA = JSON.parse(document.getElementById('data').textContent);
@@ -7816,6 +7950,7 @@ function hasMixedBenefitStatuses(items) {
 renderBanks('a');
 renderBanks('b');
 initChangesApp(document.querySelector('.changes-app'));
+initChangesPanel(document.querySelector('.js-changes-panel'));
 </script>
 </body>
 </html>
