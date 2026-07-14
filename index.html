@@ -135,7 +135,6 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   --panel: #ffffff;
   --bg: #f5f7fb;
   --accent: var(--green, #0f766e);
-  --warn: #9a3412;
   color: var(--text);
 }
 .changes-top { margin-bottom: 22px; }
@@ -151,7 +150,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 }
 .changes-filters {
   display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
   gap: 12px;
   margin: 22px 0;
 }
@@ -174,15 +173,8 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   padding: 12px 0 12px 14px;
 }
 .change-head { display: flex; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
-.temporary { color: var(--warn); font-weight: 700; }
-.changes-app h3 { margin: 6px 0; font-size: 18px; letter-spacing: 0; }
-.change p { margin: 0 0 10px; }
-.changes-app dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; margin: 0 0 10px; }
-.changes-app dl div { min-width: 0; }
-.changes-app dt { color: var(--muted); font-size: 12px; }
-.changes-app dd { margin: 0; overflow-wrap: anywhere; }
+.change p { margin: 6px 0 10px; }
 .changes-app a { color: var(--accent); font-weight: 700; }
-.warning { color: var(--warn); font-weight: 700; }
 .empty { color: var(--muted); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
 .changes-panel { margin-top: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
 .changes-panel-summary { padding: 0; }
@@ -256,7 +248,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .changes-panel .changes-app { padding-top: 16px; }
 .changes-panel .changes-app h1 { font-size: clamp(24px, 4vw, 36px); }
 @media (max-width: 760px) {
-  .changes-filters, .changes-app dl { grid-template-columns: 1fr; }
+  .changes-filters { grid-template-columns: 1fr; }
   .changes-panel-body { padding-inline: 10px; }
   .changes-panel-head { align-items: flex-start; flex-direction: column; padding-block: 10px; }
   .changes-hide-btn { width: 100%; }
@@ -283,7 +275,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div class="changes-panel-summary">
           <button type="button" class="changes-panel-toggle js-changes-show"
               aria-expanded="false">
-            Последние изменения · 115 событий · Показать
+            Последние изменения · 54 событий · Показать
           </button>
         </div>
         <div class="changes-panel-body js-changes-panel-body" hidden>
@@ -296,35 +288,25 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
           
     <section class="changes-app">
     <header class="changes-top">
-      <p class="eyebrow">Премиальное банковское обслуживание</p>
-      <h1>Изменения в премиальном обслуживании</h1>
-      <p class="updated">Последнее обновление: 14.07.2026 15:19</p>
+      <p class="eyebrow">PremiumBanking.info</p>
+      <h1>Последние изменения</h1>
+      <p class="updated">Лента публикаций из разделов PremiumBanking.info. Обновлено: 14.07.2026 15:43</p>
       <div class="changes-stats">
         <span><b>7</b> банков</span>
-        <span><b>115</b> изменений</span>
+        <span><b>54</b> публикаций</span>
       </div>
     </header>
     <section class="changes-filters" aria-label="Фильтры">
       <label>Банк
         <select class="js-change-bank-filter">
           <option value="">Все банки</option>
-          <option value="Альфа-Банк">Альфа-Банк</option>
+          <option value="Сбер">Сбер</option>
+<option value="Альфа-Банк">Альфа-Банк</option>
 <option value="ВТБ">ВТБ</option>
 <option value="Газпромбанк">Газпромбанк</option>
 <option value="Озон Банк">Озон Банк</option>
 <option value="Райффайзен Банк">Райффайзен Банк</option>
-<option value="Сбер">Сбер</option>
 <option value="Т-Банк">Т-Банк</option>
-        </select>
-      </label>
-      <label>Категория
-        <select class="js-change-category-filter">
-          <option value="">Все категории</option>
-          <option value="Бизнес-залы">Бизнес-залы</option>
-<option value="Партнерские предложения">Партнерские предложения</option>
-<option value="Прочее">Прочее</option>
-<option value="Страхование">Страхование</option>
-<option value="Условия бесплатности">Условия бесплатности</option>
         </select>
       </label>
       <label>Период
@@ -338,403 +320,143 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
     </section>
     <section class="changes-banks">
       
+      <section class="change-bank js-change-bank" data-bank="Сбер">
+        <h2>Сбер</h2>
+        <div class="timeline">
+          
+          <article class="change js-change-card"
+              data-change-id="Сбер-1"
+              data-date="2026-04-01">
+            <div class="change-head">
+              <span>апр 2026</span>
+            </div>
+            <p>В Сбере привилегия «Спорт и красота» перешла на рубли: вместо 75 баллов на 3 уровне начисляется 6000 бонусных рублей Фитмост, а вместо 100 баллов на 4, 5 и 6 уровнях — 8000 бонусных рублей Фитмост.</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Сбер-2"
+              data-date="2026-04-01">
+            <div class="change-head">
+              <span>апр 2026</span>
+            </div>
+            <p>Сбер обновил премиальную линейку: появились новые опции «Питомцы» и «Авто», а на 4 уровне «Такси» выделились в отдельную опцию на выбор.</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Сбер-3"
+              data-date="2026-03-01">
+            <div class="change-head">
+              <span>март 2026</span>
+            </div>
+            <p>Сбер обновил премиальную линейку: во всех уровнях появилась опция «Самокат», такси официально стали без привязки к аэропортам и перелётам, ресторанные компенсации распространились на поезда, а пакет «Путешествия» разделился на два — «Бизнес-залы» и «Такси и рестораны».</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Сбер-4"
+              data-date="2026-01-01">
+            <div class="change-head">
+              <span>янв 2026</span>
+            </div>
+            <p>Сбер увеличил требования по необходимым остаткам совместного доступа для СберПервого до 20 млн ₽ (сейчас 15 млн ₽).</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Сбер-5"
+              data-date="2026-01-01">
+            <div class="change-head">
+              <span>янв 2026</span>
+            </div>
+            <p>Сбер увеличил требования по необходимым остаткам для СберПервого до 15 млн ₽ (было 10 млн ₽), а также по количеству необходимых акций Сбера для выполнение через Клуб акционеров до 40 тыс шт (было 28 тыс шт). Привилегии по новым правилам будут начислены 07 февраля.</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Сбер-6"
+              data-date="2025-12-01">
+            <div class="change-head">
+              <span>дек 2025</span>
+            </div>
+            <p>Сбер распространил привилегии на выбор, доступные ранее только для клиентов СЗФО, на все регионы. Пакеты привилегий на выбор – это либо «Путешествия», либо «Здоровье», либо «Спорт и красота» (баллы Фитмост), либо «Развлечения» (компенсация Афиша ру). При этом для СберПервого от 10М «Путешествия» выбраны всегда, а для остатков 30М также всегда выбран пакет «Здоровье».</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Сбер-7"
+              data-date="2025-11-01">
+            <div class="change-head">
+              <span>ноя 2025</span>
+            </div>
+            <p>Сбер распространил привилегии на выбор, доступные ранее только для клиентов СЗФО, на клиентов Сибирского территориального банка, Дальневосточного территориального банка и Уральского территориального банка.</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Сбер-8"
+              data-date="2025-08-01">
+            <div class="change-head">
+              <span>авг 2025</span>
+            </div>
+            <p>В Сбере появилась опция для совместного учёта остатков – «Привилегии вместе».</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Сбер-9"
+              data-date="2025-07-01">
+            <div class="change-head">
+              <span>июль 2025</span>
+            </div>
+            <p>В Сбере появился «Клуб акционеров» – возможность получить СберПремьер и СберПервый за владение акциями банка.</p>
+            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+        </div>
+      </section>
+
       <section class="change-bank js-change-bank" data-bank="Альфа-Банк">
         <h2>Альфа-Банк</h2>
         <div class="timeline">
           
           <article class="change js-change-card"
-              data-change-id="alfa_alfa_aclub_Прочее_20260713_59324d5a"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="Альфа-Банк-1"
+              data-date="2026-03-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>март 2026</span>
             </div>
-            <h3>Докупаемые опции и их цена изменено</h3>
-            <p>Альфа-Банк / A-Club (private): Докупаемые опции и их цена изменено с — (докупаемых опций нет: набор привилегий Alfa Only фиксированный — Lounge, металлическая карта, партнёрские программы, премиальный вклад, привилегии в ресторанах) на — (докупаемые опции A-Club в доступных источниках не заявлены)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>A-Club (private)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>— (докупаемых опций нет: набор привилегий Alfa Only фиксированный — Lounge, металлическая карта, партнёрские программы, премиальный вклад, привилегии в ресторанах)</dd></div>
-              <div><dt>Стало</dt><dd>— (докупаемые опции A-Club в доступных источниках не заявлены)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank/5" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_1_Прочее_20260713_45cb2e3d"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 1: Позиционирование (на кого рассчитан) изменено с Альфа-Банк – Alfa Only — Уровень за 2990 ₽ в мес или 400 тыс зп; Альфа-Банк Alfa Only; Системно значимый банк на Альфа-Банк — Как подключить Alfa Only через ИП?</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Альфа-Банк – Alfa Only — Уровень за 2990 ₽ в мес или 400 тыс зп; Альфа-Банк Alfa Only; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>Альфа-Банк — Как подключить Alfa Only через ИП?</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Альфа-Банк увеличил размер компенсации за поездки на такси в А-Клубе до 5 тыс ₽ (было 2,5 тыс ₽).</p>
             <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_2_Прочее_20260713_9b224e94"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="Альфа-Банк-2"
+              data-date="2025-03-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>март 2025</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 2: Позиционирование (на кого рассчитан) изменено с Альфа-Банк – Alfa Only — Уровень за 3 млн ₽ или 2 млн ₽ и траты 200 тыс ₽; Альфа-Банк Alfa Only; Системно значимый банк на Альфа-Банк — Альфа-Банк – Alfa Only</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Альфа-Банк – Alfa Only — Уровень за 3 млн ₽ или 2 млн ₽ и траты 200 тыс ₽; Альфа-Банк Alfa Only; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>Альфа-Банк — Альфа-Банк – Alfa Only</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>В Альфа-Банке теперь не получить второй уровень за 3 млн и 200 тыс трат. Также компенсация оплаты ресторанов и БЗ ограничена: не более 20 тыс ₽ в месяц по каждому сервису.</p>
             <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_2_Бизнес_залы_20260713_edf6a2f2"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
+              data-change-id="Альфа-Банк-3"
+              data-date="2024-02-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
+              <span>фев 2024</span>
             </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 2: Бизнес-залы (визиты, спутники) изменено с 2 посещения в месяц, до 12 в год. Доступ через Mir Pass, ON·PASS, Phoenix Pass, Soft Travel и Only Assist. на 2 посещения в месяц, до 12 в год</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>2 посещения в месяц, до 12 в год. Доступ через Mir Pass, ON·PASS, Phoenix Pass, Soft Travel и Only Assist.</dd></div>
-              <div><dt>Стало</dt><dd>2 посещения в месяц, до 12 в год</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Альфа-Банк сменил название своего премиума: теперь это «Alfa Only», а не «Альфа-Премиум»</p>
             <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_2_Страхование_20260713_5082766e"
-              data-category="Страхование"
-              data-date="2026-07-13">
+              data-change-id="Альфа-Банк-4"
+              data-date="2018-01-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
+              <span>янв 2018</span>
             </div>
-            <h3>Страхование изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 2: Страхование изменено с $150/35 тыс, 90 дн, ассистанс Class Assistance; Примерная стоимость на 2 взрослых ≈ 28 000 ₽ на $150/35 тыс, 90 дн, ассистанс Class Assistance</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$150/35 тыс, 90 дн, ассистанс Class Assistance; Примерная стоимость на 2 взрослых ≈ 28 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$150/35 тыс, 90 дн, ассистанс Class Assistance</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_2_Партнерские_предложения_20260713_acdf37e0"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 2: Рестораны изменено с 2 посещения в месяц, до 12 в год по 2500 ₽; 1 чек за одну дату до 5 тыс ₽ (списывает 2 компенсации по 2.5 тыс ₽), доступно как при вылете, так и по прилёте, мгновенная компенсация по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #93; . на 2 посещения в месяц, до 12 в год по 2500 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>2 посещения в месяц, до 12 в год по 2500 ₽; 1 чек за одну дату до 5 тыс ₽ (списывает 2 компенсации по 2.5 тыс ₽), доступно как при вылете, так и по прилёте, мгновенная компенсация по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #93; .</dd></div>
-              <div><dt>Стало</dt><dd>2 посещения в месяц, до 12 в год по 2500 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_3_Прочее_20260713_ff67963a"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 3: Позиционирование (на кого рассчитан) изменено с Альфа-Банк – Alfa Only — Уровень за 6 млн ₽; Альфа-Банк Alfa Only; Системно значимый банк на Альфа-Банк — Альфа-Банк – Alfa Only</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Альфа-Банк – Alfa Only — Уровень за 6 млн ₽; Альфа-Банк Alfa Only; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>Альфа-Банк — Альфа-Банк – Alfa Only</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_3_Бизнес_залы_20260713_6ffdf924"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 3: Бизнес-залы (визиты, спутники) изменено с 8 посещений в месяц, до 24 в год. Доступ через Mir Pass, ON·PASS, Phoenix Pass, Soft Travel и Only Assist. на 8 посещений в месяц, до 24 в год</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>8 посещений в месяц, до 24 в год. Доступ через Mir Pass, ON·PASS, Phoenix Pass, Soft Travel и Only Assist.</dd></div>
-              <div><dt>Стало</dt><dd>8 посещений в месяц, до 24 в год</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_3_Страхование_20260713_c814b142"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 3: Страхование изменено с $150/35 тыс, 90 дн, ассистанс Class Assistance; Примерная стоимость на 2 взрослых ≈ 28 000 ₽ на $150/35 тыс, 90 дн, ассистанс Class Assistance</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$150/35 тыс, 90 дн, ассистанс Class Assistance; Примерная стоимость на 2 взрослых ≈ 28 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$150/35 тыс, 90 дн, ассистанс Class Assistance</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_3_Партнерские_предложения_20260713_780e654e"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 3: Рестораны изменено с 8 посещений в месяц, до 24 в год по 2500 ₽; 1 чек за одну дату до 5 тыс ₽ (списывает 2 компенсации по 2.5 тыс ₽), доступно как при вылете, так и по прилёте, мгновенная компенсация по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #93; . на 8 посещений в месяц, до 24 в год по 2500 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>8 посещений в месяц, до 24 в год по 2500 ₽; 1 чек за одну дату до 5 тыс ₽ (списывает 2 компенсации по 2.5 тыс ₽), доступно как при вылете, так и по прилёте, мгновенная компенсация по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #93; .</dd></div>
-              <div><dt>Стало</dt><dd>8 посещений в месяц, до 24 в год по 2500 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_4_Прочее_20260713_72696b42"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 4: Позиционирование (на кого рассчитан) изменено с Альфа-Банк – Alfa Only — Уровень за 12 млн ₽; Альфа-Банк Alfa Only; Системно значимый банк на Альфа-Банк — Альфа-Банк – Alfa Only</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Альфа-Банк – Alfa Only — Уровень за 12 млн ₽; Альфа-Банк Alfa Only; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>Альфа-Банк — Альфа-Банк – Alfa Only</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_4_Бизнес_залы_20260713_1482e92b"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 4: Бизнес-залы (визиты, спутники) изменено с безлимит. Доступ через Mir Pass, ON·PASS, Phoenix Pass, Soft Travel и Only Assist. на безлимит</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>безлимит. Доступ через Mir Pass, ON·PASS, Phoenix Pass, Soft Travel и Only Assist.</dd></div>
-              <div><dt>Стало</dt><dd>безлимит</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_4_Страхование_20260713_d3b0e0a5"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 4: Страхование изменено с $150/35 тыс, 90 дн, ассистанс Class Assistance; Примерная стоимость на 2 взрослых ≈ 28 000 ₽ на $150/35 тыс, 90 дн, ассистанс Class Assistance</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$150/35 тыс, 90 дн, ассистанс Class Assistance; Примерная стоимость на 2 взрослых ≈ 28 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$150/35 тыс, 90 дн, ассистанс Class Assistance</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_only_4_Партнерские_предложения_20260713_748055ae"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Альфа-Банк / Alfa Only — уровень 4: Рестораны изменено с не более 20 тыс ₽ в мес; 1 чек за одну дату до 5 тыс ₽ (списывает 2 компенсации по 2.5 тыс ₽), доступно как при вылете, так и по прилёте, мгновенная компенсация по кнопке в приложении, подробнее; в вопросе #93; . на не более 20 тыс ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Alfa Only — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>не более 20 тыс ₽ в мес; 1 чек за одну дату до 5 тыс ₽ (списывает 2 компенсации по 2.5 тыс ₽), доступно как при вылете, так и по прилёте, мгновенная компенсация по кнопке в приложении, подробнее; в вопросе #93; .</dd></div>
-              <div><dt>Стало</dt><dd>не более 20 тыс ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_aclub_Прочее_20260713_f5ecaa3c"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Альфа-Банк / A-Club (private): Позиционирование (на кого рассчитан) изменено с Альфа-Банк – А-Клуб — Уровень за 60 млн ₽ для Мск; 30 млн ₽ регионы; Альфа-Банк А-Клуб; Системно значимый банк на Альфа-Банк — Альфа-Банк – А-Клуб</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>A-Club (private)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Альфа-Банк – А-Клуб — Уровень за 60 млн ₽ для Мск; 30 млн ₽ регионы; Альфа-Банк А-Клуб; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>Альфа-Банк — Альфа-Банк – А-Клуб</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_aclub_Бизнес_залы_20260713_ccea40cd"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Альфа-Банк / A-Club (private): Бизнес-залы (визиты, спутники) изменено с безлимит. Доступ через Mir Pass, ON·PASS, Phoenix Pass, Phoenix Pass Exclusive, Soft Travel и Only Assist. на безлимит</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>A-Club (private)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>безлимит. Доступ через Mir Pass, ON·PASS, Phoenix Pass, Phoenix Pass Exclusive, Soft Travel и Only Assist.</dd></div>
-              <div><dt>Стало</dt><dd>безлимит</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_aclub_Страхование_20260713_334fa636"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>Альфа-Банк / A-Club (private): Страхование изменено с €650 тыс, 90 дн, ассистанс Class Assistance и Примерная стоимость на 2 взрослых ≈ 88 000 ₽ на €650 тыс, 90 дн, ассистанс Class Assistance</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>A-Club (private)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>€650 тыс, 90 дн, ассистанс Class Assistance и Примерная стоимость на 2 взрослых ≈ 88 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>€650 тыс, 90 дн, ассистанс Class Assistance</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="alfa_alfa_aclub_Партнерские_предложения_20260713_33cdf98f"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Альфа-Банк / A-Club (private): Рестораны изменено с безлимит по 2500 ₽; 1 чек за одну дату до 5 тыс ₽ (списывает 2 компенсации по 2.5 тыс ₽), доступно как при вылете, так и по прилёте, мгновенная компенсация по кнопке в приложении, подробнее; в вопросе #93; . на безлимит по 2500 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>A-Club (private)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>безлимит по 2500 ₽; 1 чек за одну дату до 5 тыс ₽ (списывает 2 компенсации по 2.5 тыс ₽), доступно как при вылете, так и по прилёте, мгновенная компенсация по кнопке в приложении, подробнее; в вопросе #93; .</dd></div>
-              <div><dt>Стало</dt><dd>безлимит по 2500 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Перезапуск премиальной программы Альфа-Банка</p>
             <a href="https://premiumbanking.info/alfabank" target="_blank" rel="noreferrer">Источник</a>
           </article>
         </div>
@@ -745,794 +467,92 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div class="timeline">
           
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_5_Прочее_20260714_8f1c952d"
-              data-category="Прочее"
-              data-date="2026-07-14">
+              data-change-id="ВТБ-1"
+              data-date="2026-07-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
+              <span>июль 2026</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 5: Позиционирование (на кого рассчитан) изменено с ВТБ — ВТБ – Прайм+ на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>ВТБ — ВТБ – Прайм+</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://private.vtb.ru/" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_6_Прочее_20260714_ddc5c796"
-              data-category="Прочее"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 6: Позиционирование (на кого рассчитан) изменено с ВТБ — ВТБ – Прайм+ на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 6</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>ВТБ — ВТБ – Прайм+</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://private.vtb.ru/" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_7_Прочее_20260714_519333fd"
-              data-category="Прочее"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 7: Позиционирование (на кого рассчитан) изменено с ВТБ — ВТБ – Прайм+ на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 7</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>ВТБ — ВТБ – Прайм+</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://private.vtb.ru/" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_8_Прочее_20260714_f47dd5c7"
-              data-category="Прочее"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 8: Позиционирование (на кого рассчитан) изменено с ВТБ — ВТБ – Прайм+ на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 8</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>ВТБ — ВТБ – Прайм+</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://private.vtb.ru/" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_1_Условия_бесплатности_20260713_9adda5a1"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>ВТБ / Привилегия — уровень 1: Условия входа / поддержания уровня изменено с 3990 ₽ в мес; или траты 150 тыс ₽; или 300 тыс зп; или 9000 акций (≈576,000₽); Среднемесячный остаток в банке и на последний календарный день месяца в брокере на 3990 ₽ в мес; или траты 150 тыс ₽; или 300 тыс зп; или 9000 акций (≈585,000₽); Среднемесячный остаток в банке и на последний календарный день месяца в брокере</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>3990 ₽ в мес; или траты 150 тыс ₽; или 300 тыс зп; или 9000 акций (≈576,000₽); Среднемесячный остаток в банке и на последний календарный день месяца в брокере</dd></div>
-              <div><dt>Стало</dt><dd>3990 ₽ в мес; или траты 150 тыс ₽; или 300 тыс зп; или 9000 акций (≈585,000₽); Среднемесячный остаток в банке и на последний календарный день месяца в брокере</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb/1" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_5_Прочее_20260713_5c9909d6"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 5: Позиционирование (на кого рассчитан) изменено с не найдено на ВТБ — ВТБ – Прайм+</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Стало</dt><dd>ВТБ — ВТБ – Прайм+</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>ВТБ повысил требования для бесплатного обслуживания на Привилегии по тратам (до 150 тыс в мес) и по зарплате (до 300 тыс в мес или 700 тыс за 3 месяца).</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_5_Условия_бесплатности_20260713_6e9cef61"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
+              data-change-id="ВТБ-2"
+              data-date="2026-06-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
+              <span>июнь 2026</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 5: Условия входа / поддержания уровня изменено с за 16667 ₽ в мес; или 90000 акций (≈5,760,000₽) на за 16667 ₽ в мес; или 90000 акций (≈5,850,000₽)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>за 16667 ₽ в мес; или 90000 акций (≈5,760,000₽)</dd></div>
-              <div><dt>Стало</dt><dd>за 16667 ₽ в мес; или 90000 акций (≈5,850,000₽)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>ВТБ добавил на всех уровнях доступ в приложение для организации отдыха appoint, а для уровней от 6 млн ₽ — получение один раз в год бесплатного электронного кода для appoint.</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_6_Прочее_20260713_b56a9ce9"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="ВТБ-3"
+              data-date="2026-05-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>май 2026</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 6: Позиционирование (на кого рассчитан) изменено с не найдено на ВТБ — ВТБ – Прайм+</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 6</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Стало</dt><dd>ВТБ — ВТБ – Прайм+</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>ВТБ добавил ·ON·PASS Premium для уровня от 10 млн ₽ — в рамках лимита посещения бизнес-залов.</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_7_Прочее_20260713_a05a64f9"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="ВТБ-4"
+              data-date="2026-05-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>май 2026</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 7: Позиционирование (на кого рассчитан) изменено с не найдено на ВТБ — ВТБ – Прайм+</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 7</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Стало</dt><dd>ВТБ — ВТБ – Прайм+</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>ВТБ добавил телемедицину в «Привилегию» от 10 млн ₽ остатков.</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_8_Прочее_20260713_58e8fdbe"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="ВТБ-5"
+              data-date="2026-03-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>март 2026</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 8: Позиционирование (на кого рассчитан) изменено с не найдено на ВТБ — ВТБ – Прайм+</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 8</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Стало</dt><dd>ВТБ — ВТБ – Прайм+</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>В ВТБ в рамках лимита на бизнес-залы стали доступны услуги ускоренных предполётных формальностей ·ON·TRACK и упаковки багажа ·ON·PACK.</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_1_Прочее_20260713_82115e3d"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="ВТБ-6"
+              data-date="2026-01-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>янв 2026</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Привилегия — уровень 1: Позиционирование (на кого рассчитан) изменено с ВТБ – Привилегия — Уровень за 3990 ₽ в мес или траты 150 тыс ₽ или 300 тыс зп или 9000 акций (≈585,000₽); ВТБ Привилегия; Системно значимый банк на Банк ВТБ — Как устроена компенсация ресторанов у ВТБ Привилегии?</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>ВТБ – Привилегия — Уровень за 3990 ₽ в мес или траты 150 тыс ₽ или 300 тыс зп или 9000 акций (≈585,000₽); ВТБ Привилегия; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>Банк ВТБ — Как устроена компенсация ресторанов у ВТБ Привилегии?</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Стоимость платного обслуживания в ВТБ «Привилегия» увеличена до 3990 ₽ (было 2990 ₽).</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_2_Прочее_20260713_f65ddf1e"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="ВТБ-7"
+              data-date="2025-10-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>окт 2025</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Привилегия — уровень 2: Позиционирование (на кого рассчитан) изменено с ВТБ – Привилегия — Уровень за 2.5 млн ₽ для Мск; 2 млн ₽ регионы или 1.5 млн ₽ и траты 125 тыс ₽; ВТБ Привилегия; Системно значимый банк на ВТБ — ВТБ – Привилегия</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>ВТБ – Привилегия — Уровень за 2.5 млн ₽ для Мск; 2 млн ₽ регионы или 1.5 млн ₽ и траты 125 тыс ₽; ВТБ Привилегия; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>ВТБ — ВТБ – Привилегия</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>В ВТБ масштабные изменения привилегий: в зависимости от уровня (2М, 6М, 10М) теперь предоставляется определенное количество «Преференций» (2, 6, 10), которые можно тратить на компенсации такси (по 1000 ₽), ресторанов (по 2500 ₽) или на проход в бизнес-залы (по Mir Pass). Изменились и привилегии в пакете «Прайм+»: добавилась компенсация ресторанов в аэропортах 20 в мес / 50 в год при остатках 50М (30М для регионов) и 25 в мес / 50 в год при остатках 100М (50М для регионов). Размер компенсации – 2500 ₽.</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_2_Страхование_20260713_40e1748e"
-              data-category="Страхование"
-              data-date="2026-07-13">
+              data-change-id="ВТБ-8"
+              data-date="2024-07-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
+              <span>июль 2024</span>
             </div>
-            <h3>Страхование изменено</h3>
-            <p>ВТБ / Привилегия — уровень 2: Страхование изменено с $100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 30 000 ₽ на $100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 30 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>ВТБ при остатках от 2,5М (2,0М для регионов) теперь дает 1 поездку на такси в месяц до 1 тыс ₽. Ранее компенсировалась 1 поездка в квартал до 2 тыс ₽</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_2_Прочее_20260713_f5079963"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="ВТБ-9"
+              data-date="2011-01-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>янв 2011</span>
             </div>
-            <h3>Такси / транспорт изменено</h3>
-            <p>ВТБ / Привилегия — уровень 2: Такси / транспорт изменено с 2 посещения в месяц, до 12 в год (на 1000 ₽) — расходует «Преференции»; Компенсация оплаты за последние 30 дней по кнопке в приложении любого такси, в том числе; компенсирует поездки с i’way; , подробнее; в вопросе #36; . на 2 посещения в месяц, до 12 в год (на 1000 ₽) — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>2 посещения в месяц, до 12 в год (на 1000 ₽) — расходует «Преференции»; Компенсация оплаты за последние 30 дней по кнопке в приложении любого такси, в том числе; компенсирует поездки с i’way; , подробнее; в вопросе #36; .</dd></div>
-              <div><dt>Стало</dt><dd>2 посещения в месяц, до 12 в год (на 1000 ₽) — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_2_Партнерские_предложения_20260713_fb7beb48"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>ВТБ / Привилегия — уровень 2: Рестораны изменено с 2 посещения в месяц, до 12 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; . на 2 посещения в месяц, до 12 в год по 2500 ₽ — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>2 посещения в месяц, до 12 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; .</dd></div>
-              <div><dt>Стало</dt><dd>2 посещения в месяц, до 12 в год по 2500 ₽ — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_3_Прочее_20260713_6502321b"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Привилегия — уровень 3: Позиционирование (на кого рассчитан) изменено с ВТБ – Привилегия — Уровень за 6 млн ₽; ВТБ Привилегия; Системно значимый банк на ВТБ — ВТБ – Привилегия</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>ВТБ – Привилегия — Уровень за 6 млн ₽; ВТБ Привилегия; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>ВТБ — ВТБ – Привилегия</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_3_Страхование_20260713_79f930e8"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>ВТБ / Привилегия — уровень 3: Страхование изменено с $100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 30 000 ₽ на $100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 30 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_3_Прочее_20260713_da4d851b"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Такси / транспорт изменено</h3>
-            <p>ВТБ / Привилегия — уровень 3: Такси / транспорт изменено с 6 посещений в месяц, до 24 в год (на 1000 ₽) — расходует «Преференции»; Компенсация оплаты за последние 30 дней по кнопке в приложении любого такси, в том числе; компенсирует поездки с i’way; , подробнее; в вопросе #36; . на 6 посещений в месяц, до 24 в год (на 1000 ₽) — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>6 посещений в месяц, до 24 в год (на 1000 ₽) — расходует «Преференции»; Компенсация оплаты за последние 30 дней по кнопке в приложении любого такси, в том числе; компенсирует поездки с i’way; , подробнее; в вопросе #36; .</dd></div>
-              <div><dt>Стало</dt><dd>6 посещений в месяц, до 24 в год (на 1000 ₽) — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_3_Партнерские_предложения_20260713_d489046a"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>ВТБ / Привилегия — уровень 3: Рестораны изменено с 6 посещений в месяц, до 24 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; . на 6 посещений в месяц, до 24 в год по 2500 ₽ — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>6 посещений в месяц, до 24 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; .</dd></div>
-              <div><dt>Стало</dt><dd>6 посещений в месяц, до 24 в год по 2500 ₽ — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_4_Прочее_20260713_cbc5b682"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>ВТБ / Привилегия — уровень 4: Позиционирование (на кого рассчитан) изменено с ВТБ – Привилегия — Уровень за 10 млн ₽; ВТБ Привилегия; Системно значимый банк на ВТБ — ВТБ – Привилегия</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>ВТБ – Привилегия — Уровень за 10 млн ₽; ВТБ Привилегия; Системно значимый банк</dd></div>
-              <div><dt>Стало</dt><dd>ВТБ — ВТБ – Привилегия</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_4_Страхование_20260713_ba66295c"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>ВТБ / Привилегия — уровень 4: Страхование изменено с $100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 30 000 ₽ на $100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 30 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$100/100 тыс, 90 дн, ассистанс Medlabel / AP Companies</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_4_Прочее_20260713_26b8f46a"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Такси / транспорт изменено</h3>
-            <p>ВТБ / Привилегия — уровень 4: Такси / транспорт изменено с 10 посещений в месяц, до 30 в год (на 1000 ₽) — расходует «Преференции»; Компенсация оплаты за последние 30 дней по кнопке в приложении любого такси, в том числе; компенсирует поездки с i’way; , подробнее; в вопросе #36; . на 10 посещений в месяц, до 30 в год (на 1000 ₽) — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>10 посещений в месяц, до 30 в год (на 1000 ₽) — расходует «Преференции»; Компенсация оплаты за последние 30 дней по кнопке в приложении любого такси, в том числе; компенсирует поездки с i’way; , подробнее; в вопросе #36; .</dd></div>
-              <div><dt>Стало</dt><dd>10 посещений в месяц, до 30 в год (на 1000 ₽) — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_privilege_4_Партнерские_предложения_20260713_eb9017d8"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>ВТБ / Привилегия — уровень 4: Рестораны изменено с 10 посещений в месяц, до 30 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; . на 10 посещений в месяц, до 30 в год по 2500 ₽ — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Привилегия — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>10 посещений в месяц, до 30 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; .</dd></div>
-              <div><dt>Стало</dt><dd>10 посещений в месяц, до 30 в год по 2500 ₽ — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_5_Условия_бесплатности_20260713_24a86fdf"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 5: Условия входа / поддержания уровня изменено с 16667 ₽ в мес; или 90000 акций (≈5,850,000₽); Среднемесячный остаток в банке и на последний календарный день месяца в брокере на за 16667 ₽ в мес; или 90000 акций (≈5,760,000₽)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>16667 ₽ в мес; или 90000 акций (≈5,850,000₽); Среднемесячный остаток в банке и на последний календарный день месяца в брокере</dd></div>
-              <div><dt>Стало</dt><dd>за 16667 ₽ в мес; или 90000 акций (≈5,760,000₽)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_5_Бизнес_залы_20260713_f1d0dc82"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 5: Бизнес-залы (визиты, спутники) изменено с 10 посещений в месяц, до 60 в год. Доступ через Mir Pass; ON·PASS; ON·PASS Premium; — расходует «Преференции» и. на 10 посещений в месяц и до 60 в год — расходует «Преференции».</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>10 посещений в месяц, до 60 в год. Доступ через Mir Pass, ON·PASS, ON·PASS Premium и — расходует «Преференции» и.</dd></div>
-              <div><dt>Стало</dt><dd>10 посещений в месяц, до 60 в год — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_5_Страхование_20260713_11073924"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 5: Страхование изменено с $500 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 68 000 ₽ на $500 тыс, 90 дн, ассистанс Medlabel / AP Companies</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$500 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 68 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$500 тыс, 90 дн, ассистанс Medlabel / AP Companies</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_5_Партнерские_предложения_20260713_66c10639"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 5: Рестораны изменено с 10 посещений в месяц, до 30 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; . на 10 посещений в месяц, до 30 в год по 2500 ₽ — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>10 посещений в месяц, до 30 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; .</dd></div>
-              <div><dt>Стало</dt><dd>10 посещений в месяц, до 30 в год по 2500 ₽ — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_6_Бизнес_залы_20260713_734a4e11"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 6: Бизнес-залы (визиты, спутники) изменено с безлимит. Доступ через Mir Pass, ON·PASS и ON·PASS Premium и. на безлимит.</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 6</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>безлимит. Доступ через Mir Pass, ON·PASS и ON·PASS Premium и.</dd></div>
-              <div><dt>Стало</dt><dd>безлимит</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_6_Страхование_20260713_9f48fed6"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 6: Страхование изменено с $500 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 68 000 ₽ на $500 тыс, 90 дн, ассистанс Medlabel / AP Companies</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 6</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$500 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 68 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$500 тыс, 90 дн, ассистанс Medlabel / AP Companies</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_6_Партнерские_предложения_20260713_3d937bf1"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 6: Рестораны изменено с 15 посещений в месяц, до 40 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; . на 15 посещений в месяц, до 40 в год по 2500 ₽ — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 6</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>15 посещений в месяц, до 40 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; .</dd></div>
-              <div><dt>Стало</dt><dd>15 посещений в месяц, до 40 в год по 2500 ₽ — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_7_Бизнес_залы_20260713_7c912cb1"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 7: Бизнес-залы (визиты, спутники) изменено с безлимит. Доступ через Mir Pass, ON·PASS и ON·PASS Premium и. на безлимит.</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 7</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>безлимит. Доступ через Mir Pass, ON·PASS и ON·PASS Premium и.</dd></div>
-              <div><dt>Стало</dt><dd>безлимит</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_7_Страхование_20260713_ab72c5ff"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 7: Страхование изменено с $500 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 68 000 ₽ на $500 тыс, 90 дн, ассистанс Medlabel / AP Companies</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 7</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$500 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 68 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$500 тыс, 90 дн, ассистанс Medlabel / AP Companies</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_7_Партнерские_предложения_20260713_ee7e5a85"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 7: Рестораны изменено с 20 посещений в месяц, до 50 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; . на 20 посещений в месяц, до 50 в год по 2500 ₽ — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 7</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>20 посещений в месяц, до 50 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; .</dd></div>
-              <div><dt>Стало</dt><dd>20 посещений в месяц, до 50 в год по 2500 ₽ — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_8_Бизнес_залы_20260713_8eee66b3"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 8: Бизнес-залы (визиты, спутники) изменено с безлимит. Доступ через Mir Pass, ON·PASS и ON·PASS Premium и. на безлимит.</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 8</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>безлимит. Доступ через Mir Pass, ON·PASS и ON·PASS Premium и.</dd></div>
-              <div><dt>Стало</dt><dd>безлимит</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_8_Страхование_20260713_96c5d84a"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 8: Страхование изменено с $500 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 68 000 ₽ на $500 тыс, 90 дн, ассистанс Medlabel / AP Companies</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 8</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$500 тыс, 90 дн, ассистанс Medlabel / AP Companies; Примерная стоимость на 2 взрослых ≈ 68 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$500 тыс, 90 дн, ассистанс Medlabel / AP Companies</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="vtb_vtb_prime_8_Партнерские_предложения_20260713_7d8ffc3d"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>ВТБ / Прайм+ — уровень 8: Рестораны изменено с 25 посещений в месяц, до 50 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; . на 25 посещений в месяц, до 50 в год по 2500 ₽ — расходует «Преференции»</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Прайм+ — уровень 8</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>25 посещений в месяц, до 50 в год по 2500 ₽ — расходует «Преференции»; Доступно как при вылете, так и по прилёте, мгновенная компенсация оплаты за последние 30 дней по кнопке в приложении, чек нужно разбивать по 2500 ₽, дневного лимита компенсаций нет, подробнее; в вопросе #30; .</dd></div>
-              <div><dt>Стало</dt><dd>25 посещений в месяц, до 50 в год по 2500 ₽ — расходует «Преференции»</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Старт премиальной программы ВТБ «Привилегия»</p>
             <a href="https://premiumbanking.info/vtb" target="_blank" rel="noreferrer">Источник</a>
           </article>
         </div>
@@ -1543,24 +563,92 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div class="timeline">
           
           <article class="change js-change-card"
-              data-change-id="gazprombank_gpb_private_Бизнес_залы_20260713_83a60f31"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
+              data-change-id="Газпромбанк-1"
+              data-date="2026-06-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
+              <span>июнь 2026</span>
             </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Газпромбанк / Private Banking: Бизнес-залы (визиты, спутники) изменено с безлимит. Доступ через Компенсация: , Mir Pass, ON·PASS, Phoenix Pass, Phoenix Pass Exclusive, через Консьерж: и Persona.aero. на безлимит</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Private Banking</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>безлимит. Доступ через Компенсация: , Mir Pass, ON·PASS, Phoenix Pass, Phoenix Pass Exclusive, через Консьерж: и Persona.aero.</dd></div>
-              <div><dt>Стало</dt><dd>безлимит</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>ГПБ ухудшил условия обслуживания: введены месячные лимиты на трансферы, а Фитмост переведён в бонусные рубли с уменьшением номинала.</p>
+            <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Газпромбанк-2"
+              data-date="2026-04-01">
+            <div class="change-head">
+              <span>апр 2026</span>
+            </div>
+            <p>В Газпромбанке в рамках программы «Спорт» добавили ДМС «Забота о здоровье» от ВСК — как альтернативу фитнес-клубам и Фитмосту.</p>
+            <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Газпромбанк-3"
+              data-date="2026-01-01">
+            <div class="change-head">
+              <span>янв 2026</span>
+            </div>
+            <p>В Газпромбанке появился Фаст стрек. Услуга доступна через консьерж-сервис в пакете «Комфортное путешествие» в рамках лимита бизнес-залов.</p>
+            <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Газпромбанк-4"
+              data-date="2025-12-01">
+            <div class="change-head">
+              <span>дек 2025</span>
+            </div>
+            <p>Газпромбанк убрал бесплатные курьерские доставки в премиальных пакетах.</p>
+            <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Газпромбанк-5"
+              data-date="2025-10-01">
+            <div class="change-head">
+              <span>окт 2025</span>
+            </div>
+            <p>Газпромбанк увеличил сумму требуемых остатков на первом уровне. Теперь вместо 2М нужно держать 2,5М. Текущим клиентам сохраняются старые условия до 15 января 2026 г.</p>
+            <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Газпромбанк-6"
+              data-date="2025-07-01">
+            <div class="change-head">
+              <span>июль 2025</span>
+            </div>
+            <p>В Газпромбанке изменились условия бесплатного премиального обслуживания на первом уровне: появились покупки от 150 тыс ₽ в мес и увеличилась сумма требуемых покупок для условия 1 млн ₽ + 100 тыс ₽ в мес покупок.</p>
+            <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Газпромбанк-7"
+              data-date="2025-06-01">
+            <div class="change-head">
+              <span>июнь 2025</span>
+            </div>
+            <p>В Газпромбанка меняется количество начисляемых баллов Fitmost: теперь 70 / 130 / 220 баллов в зависимости от уровня. Также трансферы теперь можно оформить только через сервис Яндекс Go.</p>
+            <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Газпромбанк-8"
+              data-date="2025-05-01">
+            <div class="change-head">
+              <span>май 2025</span>
+            </div>
+            <p>В программе «Комфортное путешествие» от Газпромбанка появилась возможность забрать трансфер в виде промокода для Яндекс Go. При этом механика промокода осталась аналогична трансферу – применить промокод можно только от/до аэропорта или жд вокзала.</p>
+            <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
+              data-change-id="Газпромбанк-9"
+              data-date="2025-04-01">
+            <div class="change-head">
+              <span>апр 2025</span>
+            </div>
+            <p>В Газпромбанке изменили количество доступных курьерских доставок: на 1 уровне – 2 шт, на 2 уровне – 8 шт, на 3 уровне – 10 шт. Ранее всем выдавали по 4 в мес.</p>
             <a href="https://premiumbanking.info/gazprombank" target="_blank" rel="noreferrer">Источник</a>
           </article>
         </div>
@@ -1571,354 +659,52 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div class="timeline">
           
           <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_bronze_Прочее_20260713_95558432"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="Озон Банк-1"
+              data-date="2026-04-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>апр 2026</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Озон Банк / Ultra Bronze: Позиционирование (на кого рассчитан) изменено с Ozon банк – Ultra Bronze — Уровень за 2 млн ₽; Ozon банк Ultra Bronze на Озон Банк — Ozon банк – Ultra Bronze</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Ozon банк – Ultra Bronze — Уровень за 2 млн ₽; Ozon банк Ultra Bronze</dd></div>
-              <div><dt>Стало</dt><dd>Озон Банк — Ozon банк – Ultra Bronze</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>В Озон Банке новые уровни премиального обслуживания: Bronze — 2–3 млн ₽, Silver — 3–6 млн ₽, Gold — 6–12 млн ₽, Platinum — от 12 млн ₽. Также новые привилегии: компенсация питания в аэропортовых ресторанах, компенсация покупок в Ozon Select и медицинская программа.</p>
             <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_bronze_Бизнес_залы_20260713_1b95a069"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
+              data-change-id="Озон Банк-2"
+              data-date="2025-12-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
+              <span>дек 2025</span>
             </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Озон Банк / Ultra Bronze: Бизнес-залы (визиты, спутники) изменено с 2 посещения в месяц. Доступ через Mir Pass, ON·PASS и Grey Wall. на 2 посещения в месяц</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>2 посещения в месяц. Доступ через Mir Pass, ON·PASS и Grey Wall.</dd></div>
-              <div><dt>Стало</dt><dd>2 посещения в месяц</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Ozon банк убрал компенсацию подарков (цветов).</p>
             <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_bronze_Страхование_20260713_9d353c60"
-              data-category="Страхование"
-              data-date="2026-07-13">
+              data-change-id="Озон Банк-3"
+              data-date="2025-09-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
+              <span>сент 2025</span>
             </div>
-            <h3>Страхование изменено</h3>
-            <p>Озон Банк / Ultra Bronze: Страхование изменено с €200/50 тыс, 60 дн, ассистанс Balt Assistance и Примерная стоимость на 2 взрослых ≈ 24 000 ₽ на €200/50 тыс, 60 дн, ассистанс Balt Assistance</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>€200/50 тыс, 60 дн, ассистанс Balt Assistance и Примерная стоимость на 2 взрослых ≈ 24 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>€200/50 тыс, 60 дн, ассистанс Balt Assistance</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Ozon банк добавил компенсацию подарков (цветов): на 1 уровне (1,4М) – 1 раз в мес (2 в год) по 2500 ₽, на 2 уровне (6М) – 1 раз в мес (4 в год) по 5000 ₽, на 3 уровне (12М) – 1 раз в мес (6 в год) по 5000 ₽.</p>
             <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_bronze_Партнерские_предложения_20260713_3748e78c"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
+              data-change-id="Озон Банк-4"
+              data-date="2025-07-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
+              <span>июль 2025</span>
             </div>
-            <h3>Рестораны изменено</h3>
-            <p>Озон Банк / Ultra Bronze: Рестораны изменено с 2 посещения в месяц по 1000 ₽; 1 чек за одну дату, доступно только при вылете в день вылета, за день до него и день после, компенсация через чат с чеком и посадочным талоном или автоматическая по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #79; . на 2 посещения в месяц по 1000 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>2 посещения в месяц по 1000 ₽; 1 чек за одну дату, доступно только при вылете в день вылета, за день до него и день после, компенсация через чат с чеком и посадочным талоном или автоматическая по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #79; .</dd></div>
-              <div><dt>Стало</dt><dd>2 посещения в месяц по 1000 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>В Ozon банке появилось платное выполнение базовых условий обслуживания – за 2900 ₽ в мес.</p>
             <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_silver_Прочее_20260713_06605676"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="Озон Банк-5"
+              data-date="2024-12-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>дек 2024</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Озон Банк / Ultra Silver: Позиционирование (на кого рассчитан) изменено с Ozon банк – Ultra Silver — Уровень за 3 млн ₽; Ozon банк Ultra Silver на Озон Банк — Ozon банк – Ultra Silver</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Silver</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Ozon банк – Ultra Silver — Уровень за 3 млн ₽; Ozon банк Ultra Silver</dd></div>
-              <div><dt>Стало</dt><dd>Озон Банк — Ozon банк – Ultra Silver</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_silver_Бизнес_залы_20260713_f3cd514a"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Озон Банк / Ultra Silver: Бизнес-залы (визиты, спутники) изменено с 4 посещения в месяц. Доступ через Mir Pass, ON·PASS и Grey Wall. на 4 посещения в месяц</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Silver</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>4 посещения в месяц. Доступ через Mir Pass, ON·PASS и Grey Wall.</dd></div>
-              <div><dt>Стало</dt><dd>4 посещения в месяц</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_silver_Страхование_20260713_0246b824"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>Озон Банк / Ultra Silver: Страхование изменено с €200/50 тыс, 60 дн, ассистанс Balt Assistance и Примерная стоимость на 2 взрослых ≈ 24 000 ₽ на €200/50 тыс, 60 дн, ассистанс Balt Assistance</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Silver</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>€200/50 тыс, 60 дн, ассистанс Balt Assistance и Примерная стоимость на 2 взрослых ≈ 24 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>€200/50 тыс, 60 дн, ассистанс Balt Assistance</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_silver_Партнерские_предложения_20260713_a5ea5112"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Озон Банк / Ultra Silver: Рестораны изменено с 4 посещения в месяц по 1500 ₽; 1 чек за одну дату, доступно только при вылете в день вылета, за день до него и день после, компенсация через чат с чеком и посадочным талоном или автоматическая по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #79; . на 4 посещения в месяц по 1500 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Silver</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>4 посещения в месяц по 1500 ₽; 1 чек за одну дату, доступно только при вылете в день вылета, за день до него и день после, компенсация через чат с чеком и посадочным талоном или автоматическая по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #79; .</dd></div>
-              <div><dt>Стало</dt><dd>4 посещения в месяц по 1500 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_gold_Прочее_20260713_7801fc69"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Озон Банк / Ultra Gold: Позиционирование (на кого рассчитан) изменено с Ozon банк – Ultra Gold — Уровень за 6 млн ₽; Ozon банк Ultra Gold на Озон Банк — Ozon банк – Ultra Gold</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Gold</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Ozon банк – Ultra Gold — Уровень за 6 млн ₽; Ozon банк Ultra Gold</dd></div>
-              <div><dt>Стало</dt><dd>Озон Банк — Ozon банк – Ultra Gold</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_gold_Бизнес_залы_20260713_ed5c8425"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Озон Банк / Ultra Gold: Бизнес-залы (визиты, спутники) изменено с 6 посещений в месяц. Доступ через Mir Pass, ON·PASS и Grey Wall. на 6 посещений в месяц</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Gold</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>6 посещений в месяц. Доступ через Mir Pass, ON·PASS и Grey Wall.</dd></div>
-              <div><dt>Стало</dt><dd>6 посещений в месяц</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_gold_Страхование_20260713_f6b7a37a"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>Озон Банк / Ultra Gold: Страхование изменено с €200/50 тыс, 60 дн, ассистанс Balt Assistance и Примерная стоимость на 2 взрослых ≈ 24 000 ₽ на €200/50 тыс, 60 дн, ассистанс Balt Assistance</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Gold</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>€200/50 тыс, 60 дн, ассистанс Balt Assistance и Примерная стоимость на 2 взрослых ≈ 24 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>€200/50 тыс, 60 дн, ассистанс Balt Assistance</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_gold_Партнерские_предложения_20260713_6ea3a80a"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Озон Банк / Ultra Gold: Рестораны изменено с 6 посещений в месяц по 2000 ₽; 1 чек за одну дату, доступно только при вылете в день вылета, за день до него и день после, компенсация через чат с чеком и посадочным талоном или автоматическая по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #79; . на 6 посещений в месяц по 2000 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Gold</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>6 посещений в месяц по 2000 ₽; 1 чек за одну дату, доступно только при вылете в день вылета, за день до него и день после, компенсация через чат с чеком и посадочным талоном или автоматическая по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #79; .</dd></div>
-              <div><dt>Стало</dt><dd>6 посещений в месяц по 2000 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_platinum_Прочее_20260713_374c8de3"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Озон Банк / Ultra Platinum: Позиционирование (на кого рассчитан) изменено с Ozon банк – Ultra Platinum — Уровень за 12 млн ₽; Ozon банк Ultra Platinum на Озон Банк — Ozon банк – Ultra Platinum</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Platinum</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Ozon банк – Ultra Platinum — Уровень за 12 млн ₽; Ozon банк Ultra Platinum</dd></div>
-              <div><dt>Стало</dt><dd>Озон Банк — Ozon банк – Ultra Platinum</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_platinum_Бизнес_залы_20260713_f80c3f37"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Озон Банк / Ultra Platinum: Бизнес-залы (визиты, спутники) изменено с безлимит. Доступ через Mir Pass, ON·PASS и Grey Wall. на безлимит</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Platinum</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>безлимит. Доступ через Mir Pass, ON·PASS и Grey Wall.</dd></div>
-              <div><dt>Стало</dt><dd>безлимит</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_platinum_Страхование_20260713_20185dfd"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>Озон Банк / Ultra Platinum: Страхование изменено с €200/50 тыс, 60 дн, ассистанс Balt Assistance и Примерная стоимость на 2 взрослых ≈ 24 000 ₽ на €200/50 тыс, 60 дн, ассистанс Balt Assistance</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Platinum</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>€200/50 тыс, 60 дн, ассистанс Balt Assistance и Примерная стоимость на 2 взрослых ≈ 24 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>€200/50 тыс, 60 дн, ассистанс Balt Assistance</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="ozonbank_ozonbank_ultra_platinum_Партнерские_предложения_20260713_5b794ab1"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Озон Банк / Ultra Platinum: Рестораны изменено с 8 посещений в месяц по 2500 ₽; 1 чек за одну дату, доступно только при вылете в день вылета, за день до него и день после, компенсация через чат с чеком и посадочным талоном или автоматическая по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #79; . на 8 посещений в месяц по 2500 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Ultra Platinum</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>8 посещений в месяц по 2500 ₽; 1 чек за одну дату, доступно только при вылете в день вылета, за день до него и день после, компенсация через чат с чеком и посадочным талоном или автоматическая по кнопке в приложении, расходует лимит бизнес-залов, подробнее; в вопросе #79; .</dd></div>
-              <div><dt>Стало</dt><dd>8 посещений в месяц по 2500 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Старт премиальной программы в Ozon банке.</p>
             <a href="https://premiumbanking.info/ozon" target="_blank" rel="noreferrer">Источник</a>
           </article>
         </div>
@@ -1929,669 +715,103 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div class="timeline">
           
           <article class="change js-change-card"
-              data-change-id="raiffeisen_raif_premium_2_Условия_бесплатности_20260713_3b9442d8"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
+              data-change-id="Райффайзен Банк-1"
+              data-date="2025-12-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
+              <span>дек 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Райффайзен Банк / Premium (за траты): Условия входа / поддержания уровня изменено с траты 150 тыс ₽; Весь последний календарный день месяца на за 1.5 млн ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium (за траты)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>траты 150 тыс ₽; Весь последний календарный день месяца</dd></div>
-              <div><dt>Стало</dt><dd>за 1.5 млн ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Райффайзен банк убрал компенсацию ресторанов за траты 150 тыс руб.</p>
             <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="raiffeisen_raif_premium_3_Условия_бесплатности_20260713_94c30870"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
+              data-change-id="Райффайзен Банк-2"
+              data-date="2025-09-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
+              <span>сент 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Райффайзен Банк / Premium (за остаток): Условия входа / поддержания уровня изменено с 1.5 млн ₽; Весь последний календарный день месяца на за 5 млн ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium (за остаток)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>1.5 млн ₽; Весь последний календарный день месяца</dd></div>
-              <div><dt>Стало</dt><dd>за 5 млн ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Райффайзен добавил возможность компенсировать расходы на рестораны в аэропортах.</p>
             <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
-        </div>
-      </section>
 
-      <section class="change-bank js-change-bank" data-bank="Сбер">
-        <h2>Сбер</h2>
-        <div class="timeline">
-          
           <article class="change js-change-card"
-              data-change-id="sber_sber_premier_1_Условия_бесплатности_20260714_d92f8652"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
+              data-change-id="Райффайзен Банк-3"
+              data-date="2025-08-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
+              <span>авг 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 1: Условия входа / поддержания уровня изменено с Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,184,000₽); или 1990 ₽ в мес на Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,180,000₽); или 1990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,184,000₽); или 1990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,180,000₽); или 1990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+            <p>Райффайзен изменил перечень услуг, доступных в рамках ДМС. Теперь вместо 10 очных приемов – 10 посещений клиник, включающие врачей и процедуры, а от 5М – расширенный состав клиник. Также стал недоступен общий чекап.</p>
+            <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="sber_sber_premier_2_Условия_бесплатности_20260714_4df7d0cb"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
+              data-change-id="Райффайзен Банк-4"
+              data-date="2025-08-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
+              <span>авг 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 2: Условия входа / поддержания уровня изменено с Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,368,000₽); или 3990 ₽ в мес на Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,360,000₽); или 3990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,368,000₽); или 3990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,360,000₽); или 3990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+            <p>Райффайзен изменил учет остатков: теперь остатки учитываются весь последний календарный день месяца. Ранее условие проверялось только на конец дня.</p>
+            <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="sber_sber_premier_3_Условия_бесплатности_20260714_a0dc211c"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
+              data-change-id="Райффайзен Банк-5"
+              data-date="2025-06-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
+              <span>июнь 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 3: Условия входа / поддержания уровня изменено с Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,736,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес на Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,720,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,736,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,720,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+            <p>В Райффайзен Банке закончилась акция «Сейф с подарками». Вместо нее – «Привилегии на выбор».</p>
+            <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="sber_sber_first_4_Условия_бесплатности_20260714_f659c503"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
+              data-change-id="Райффайзен Банк-6"
+              data-date="2025-03-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
+              <span>март 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПервый — уровень 4: Условия входа / поддержания уровня изменено с Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,840,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес на Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,800,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,840,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,800,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+            <p>Райффайзен сделал ДМС доступнее: теперь медицина с очными приемами и чекапом от 1.5М остатков (ранее – от 5М).</p>
+            <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="sber_sber_first_5_Условия_бесплатности_20260714_f2e66ec4"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
+              data-change-id="Райффайзен Банк-7"
+              data-date="2025-03-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
+              <span>март 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПервый — уровень 5: Условия входа / поддержания уровня изменено с Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,568,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес на Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,485,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,568,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,485,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+            <p>Райффайзен полностью запрещает покупку новых активов на брокерский счет.</p>
+            <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="sber_sber_premier_1_Прочее_20260714_f4f82d67"
-              data-category="Прочее"
-              data-date="2026-07-14">
+              data-change-id="Райффайзен Банк-8"
+              data-date="2025-02-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
+              <span>фев 2025</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Сбер / СберПремьер — уровень 1: Позиционирование (на кого рассчитан) изменено с Сбер — Сбер – Уровень 1 на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Сбер — Сбер – Уровень 1</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://www.sberbank.ru/ru/person/sb_premier_new" target="_blank" rel="noreferrer">Источник</a>
+            <p>Райффайзен повышает комиссию за покупку на брокерский счет до 3% за сделку (было 1.9%).</p>
+            <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="sber_sber_premier_1_Условия_бесплатности_20260714_ef760fa3"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
+              data-change-id="Райффайзен Банк-9"
+              data-date="2024-10-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
+              <span>окт 2024</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 1: Условия входа / поддержания уровня изменено с Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,176,000₽); или 1990 ₽ в мес на Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,184,000₽); или 1990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,176,000₽); или 1990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,184,000₽); или 1990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+            <p>Райффайзен добавил возможность компенсировать БЗ от Every Lounge</p>
+            <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="sber_sber_premier_2_Прочее_20260714_04dc0373"
-              data-category="Прочее"
-              data-date="2026-07-14">
+              data-change-id="Райффайзен Банк-10"
+              data-date="2024-08-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
+              <span>авг 2024</span>
             </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Сбер / СберПремьер — уровень 2: Позиционирование (на кого рассчитан) изменено с Сбер — Сбер – Уровень 2 на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Сбер — Сбер – Уровень 2</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://www.sberbank.ru/ru/person/sb_premier_new" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_2_Условия_бесплатности_20260714_b8e29131"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 2: Условия входа / поддержания уровня изменено с Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,352,000₽); или 3990 ₽ в мес на Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,368,000₽); или 3990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,352,000₽); или 3990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,368,000₽); или 3990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_3_Прочее_20260714_26a5a16d"
-              data-category="Прочее"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Сбер / СберПремьер — уровень 3: Позиционирование (на кого рассчитан) изменено с Сбер — Сбер – Уровень 3 на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Сбер — Сбер – Уровень 3</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://www.sberbank.ru/ru/person/sb_premier_new" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_3_Условия_бесплатности_20260714_40d83242"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 3: Условия входа / поддержания уровня изменено с Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,704,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес на Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,736,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,704,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,736,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_first_4_Прочее_20260714_69f323a0"
-              data-category="Прочее"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Сбер / СберПервый — уровень 4: Позиционирование (на кого рассчитан) изменено с Сбер — Сбер – Уровень 4 на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Сбер — Сбер – Уровень 4</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://www.sberbank.ru/first" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_first_4_Условия_бесплатности_20260714_acf4fddd"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПервый — уровень 4: Условия входа / поддержания уровня изменено с Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,760,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес на Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,840,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,760,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,840,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_first_5_Прочее_20260714_b8f142f4"
-              data-category="Прочее"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Позиционирование (на кого рассчитан) изменено</h3>
-            <p>Сбер / СберПервый — уровень 5: Позиционирование (на кого рассчитан) изменено с Сбер — Сбер – Уровень 5 на не найдено</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Сбер — Сбер – Уровень 5</dd></div>
-              <div><dt>Стало</dt><dd>Не найдено в доступных источниках</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://www.sberbank.ru/first" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_first_5_Условия_бесплатности_20260714_269a42ff"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
-            <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПервый — уровень 5: Условия входа / поддержания уровня изменено с Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,402,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес на Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,568,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,402,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,568,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_1_Условия_бесплатности_20260713_cced3b24"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 1: Условия входа / поддержания уровня изменено с Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,172,000₽); или 1990 ₽ в мес на Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,176,000₽); или 1990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,172,000₽); или 1990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,176,000₽); или 1990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_2_Условия_бесплатности_20260713_045235c0"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 2: Условия входа / поддержания уровня изменено с Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,344,000₽); или 3990 ₽ в мес на Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,352,000₽); или 3990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,344,000₽); или 3990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,352,000₽); или 3990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_3_Условия_бесплатности_20260713_20d339a7"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 3: Условия входа / поддержания уровня изменено с Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,688,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес на Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,704,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,688,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,704,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_first_4_Условия_бесплатности_20260713_e3221875"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПервый — уровень 4: Условия входа / поддержания уровня изменено с Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,720,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес на Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,760,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,720,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,760,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_first_5_Условия_бесплатности_20260713_fa59791c"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПервый — уровень 5: Условия входа / поддержания уровня изменено с Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,319,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес на Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,402,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,319,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,402,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_1_Условия_бесплатности_20260713_3532b8c1"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 1: Условия входа / поддержания уровня изменено с Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,184,000₽); или 1990 ₽ в мес на Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,172,000₽); или 1990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,184,000₽); или 1990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 2 млн ₽; или траты 150 тыс ₽; или 4000 акций (≈1,172,000₽); или 1990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_1_Бизнес_залы_20260713_eeeb7732"
-              data-category="Бизнес-залы"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Бизнес-залы</span>
-              
-            </div>
-            <h3>Бизнес-залы (визиты, спутники) изменено</h3>
-            <p>Сбер / СберПремьер — уровень 1: Бизнес-залы (визиты, спутники) изменено с Два бесплатных прохода в бизнес-залы аэропортов или Ж/Д вокзалов России в месяц.; 2 бесплатных прохода в бизнес-залы аэропортов или Ж/Д вокзалов в месяц. на</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Два бесплатных прохода в бизнес-залы аэропортов или Ж/Д вокзалов России в месяц.; 2 бесплатных прохода в бизнес-залы аэропортов или Ж/Д вокзалов в месяц.</dd></div>
-              <div><dt>Стало</dt><dd>—</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber/1" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_1_Прочее_20260713_7edf4ac5"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Такси / транспорт изменено</h3>
-            <p>Сбер / СберПремьер — уровень 1: Такси / транспорт изменено с Два бесплатных прохода в бизнес-залы аэропортов или Ж/Д вокзалов России в месяц.; Кафе, рестораны, такси; 2 бесплатных прохода в бизнес-залы аэропортов или Ж/Д вокзалов в месяц. на</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Два бесплатных прохода в бизнес-залы аэропортов или Ж/Д вокзалов России в месяц.; Кафе, рестораны, такси; 2 бесплатных прохода в бизнес-залы аэропортов или Ж/Д вокзалов в месяц.</dd></div>
-              <div><dt>Стало</dt><dd>—</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber/1" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_1_Партнерские_предложения_20260713_6e905c56"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Сбер / СберПремьер — уровень 1: Рестораны изменено с Кафе, рестораны, такси и За посещение ресторана (~ 6 раз в месяц) на</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 1</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Кафе, рестораны, такси и За посещение ресторана (~ 6 раз в месяц)</dd></div>
-              <div><dt>Стало</dt><dd>—</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber/1" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_2_Условия_бесплатности_20260713_279dd7fa"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 2: Условия входа / поддержания уровня изменено с Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,368,000₽); или 3990 ₽ в мес на Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,344,000₽); или 3990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 2</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,368,000₽); или 3990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 3 млн ₽; или траты 200 тыс ₽; или 8000 акций (≈2,344,000₽); или 3990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_premier_3_Условия_бесплатности_20260713_f3f8ede8"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПремьер — уровень 3: Условия входа / поддержания уровня изменено с Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,736,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес на Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,688,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПремьер — уровень 3</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,736,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПремьер за 6 млн ₽; или траты 350 тыс ₽; или 16000 акций (≈4,688,000₽); или 10 млн ₽ в совместном доступе; или 9990 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_first_4_Условия_бесплатности_20260713_70bb4730"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПервый — уровень 4: Условия входа / поддержания уровня изменено с Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,840,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес на Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,720,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 4</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,840,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПервый за 15 млн ₽; или 40000 акций (≈11,720,000₽); или 20 млн ₽ в совместном доступе; или 30000 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="sber_sber_first_5_Условия_бесплатности_20260713_b2ae64de"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
-            </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Сбер / СберПервый — уровень 5: Условия входа / поддержания уровня изменено с Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,568,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес на Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,319,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>СберПервый — уровень 5</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,568,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</dd></div>
-              <div><dt>Стало</dt><dd>Новый СберПервый за 30 млн ₽; или 83000 акций (≈24,319,000₽); или 30 млн ₽ в совместном доступе; или 50000 ₽ в мес</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/sber" target="_blank" rel="noreferrer">Источник</a>
+            <p>Райффайзен поднял комиссию при брокерском обслуживании для ВСЕХ тарифов до запредельных 1,9% по сделкам покупки.</p>
+            <a href="https://premiumbanking.info/raiffeisen" target="_blank" rel="noreferrer">Источник</a>
           </article>
         </div>
       </section>
@@ -2601,310 +821,82 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div class="timeline">
           
           <article class="change js-change-card"
-              data-change-id="tbank_tbank_bronze_Условия_бесплатности_20260714_3dcb00ce"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
+              data-change-id="Т-Банк-1"
+              data-date="2026-06-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
+              <span>июнь 2026</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Т-Банк / Premium Bronze: Условия входа / поддержания уровня изменено с Уровень за 2990 ₽ в мес; или 5000 акций (≈1,260,000₽) на Уровень за 2990 ₽ в мес; или 5000 акций (≈1,255,000₽)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Уровень за 2990 ₽ в мес; или 5000 акций (≈1,260,000₽)</dd></div>
-              <div><dt>Стало</dt><dd>Уровень за 2990 ₽ в мес; или 5000 акций (≈1,255,000₽)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>В Т-Банке новый партнёр для доступа в бизнес-залы — Persona.aero.</p>
             <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="tbank_tbank_bronze_Условия_бесплатности_20260714_0c8c067f"
-              data-category="Условия бесплатности"
-              data-date="2026-07-14">
+              data-change-id="Т-Банк-2"
+              data-date="2025-11-01">
             <div class="change-head">
-              <span>2026-07-14</span>
-              <span>Условия бесплатности</span>
-              
+              <span>ноя 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Т-Банк / Premium Bronze: Условия входа / поддержания уровня изменено с Уровень за 2990 ₽ в мес; или 5000 акций (≈1,250,000₽) на Уровень за 2990 ₽ в мес; или 5000 акций (≈1,260,000₽)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Уровень за 2990 ₽ в мес; или 5000 акций (≈1,250,000₽)</dd></div>
-              <div><dt>Стало</dt><dd>Уровень за 2990 ₽ в мес; или 5000 акций (≈1,260,000₽)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Акция в Т-Банке: до 15 января 2026 уровни Diamond и Private снова могут получить годовую программу ДМС «Diamond».</p>
             <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="tbank_tbank_bronze_Условия_бесплатности_20260713_190d8485"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
+              data-change-id="Т-Банк-3"
+              data-date="2025-09-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
+              <span>сент 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Т-Банк / Premium Bronze: Условия входа / поддержания уровня изменено с Уровень за 2990 ₽ в мес; или 5000 акций (≈1,245,000₽) на Уровень за 2990 ₽ в мес; или 5000 акций (≈1,250,000₽)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Уровень за 2990 ₽ в мес; или 5000 акций (≈1,245,000₽)</dd></div>
-              <div><dt>Стало</dt><dd>Уровень за 2990 ₽ в мес; или 5000 акций (≈1,250,000₽)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Т-Банк поднял стоимость обслуживания на уровне Bronze до 2990 ₽ в мес, а также добавил ДМС от «Лучи» с телемедициной, компенсацию ресторанов на уровнях Bronze и Silver в размере до 1 тыс ₽ на посадочный и компенсацию одной поездки на каршеринге до 500 ₽ на уровнях Bronze и Silver. Также появилась компенсация каршеринга для уровней Gold, Diamond и Private в рамках лимита на такси.</p>
             <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="tbank_tbank_bronze_Условия_бесплатности_20260713_80d6a275"
-              data-category="Условия бесплатности"
-              data-date="2026-07-13">
+              data-change-id="Т-Банк-4"
+              data-date="2025-08-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Условия бесплатности</span>
-              
+              <span>авг 2025</span>
             </div>
-            <h3>Условия входа / поддержания уровня изменено</h3>
-            <p>Т-Банк / Premium Bronze: Условия входа / поддержания уровня изменено с 2990 ₽ в мес; или 5000 акций (≈1,260,000₽); Минимальный остаток на Уровень за 2990 ₽ в мес; или 5000 акций (≈1,245,000₽)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>2990 ₽ в мес; или 5000 акций (≈1,260,000₽); Минимальный остаток</dd></div>
-              <div><dt>Стало</dt><dd>Уровень за 2990 ₽ в мес; или 5000 акций (≈1,245,000₽)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>В Т-Банке появилась возможность компенсировать ресторан по кнопке в приложении.</p>
             <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="tbank_tbank_bronze_Страхование_20260713_f2a51584"
-              data-category="Страхование"
-              data-date="2026-07-13">
+              data-change-id="Т-Банк-5"
+              data-date="2025-08-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
+              <span>авг 2025</span>
             </div>
-            <h3>Страхование изменено</h3>
-            <p>Т-Банк / Premium Bronze: Страхование изменено с $100/100 тыс, 45 дн, ассистанс Евразия Ассистанс; Примерная стоимость на 2 взрослых ≈ 20 000 ₽ на $100/100 тыс, 45 дн, ассистанс Евразия Ассистанс</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$100/100 тыс, 45 дн, ассистанс Евразия Ассистанс; Примерная стоимость на 2 взрослых ≈ 20 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$100/100 тыс, 45 дн, ассистанс Евразия Ассистанс</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Т-Банк понизил размер компенсации ресторанов в заграничных аэропортах до $25 (было $50) на посадочный для уровней Gold и Diamond. Для Private осталось $50. При этом действие самой акции продлено до 31 октября 2025 г.</p>
             <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="tbank_tbank_bronze_Прочее_20260713_5250078d"
-              data-category="Прочее"
-              data-date="2026-07-13">
+              data-change-id="Т-Банк-6"
+              data-date="2025-04-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
+              <span>апр 2025</span>
             </div>
-            <h3>Такси / транспорт изменено</h3>
-            <p>Т-Банк / Premium Bronze: Такси / транспорт изменено с Каршеринг 1 посещение в месяц (по 500 ₽); Компенсация одной поездки на каршеринге до 500 ₽ по кнопке в приложении, мерчант «YANDEX.DRIVE», «DELIMOBIL», «CITYDRIVE», «BELKACAR» на Каршеринг 1 посещение в месяц (по 500 ₽)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Каршеринг 1 посещение в месяц (по 500 ₽); Компенсация одной поездки на каршеринге до 500 ₽ по кнопке в приложении, мерчант «YANDEX.DRIVE», «DELIMOBIL», «CITYDRIVE», «BELKACAR»</dd></div>
-              <div><dt>Стало</dt><dd>Каршеринг 1 посещение в месяц (по 500 ₽)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>В Т-Банке стало доступно страхование имущества.</p>
             <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="tbank_tbank_bronze_Партнерские_предложения_20260713_9ca9d993"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
+              data-change-id="Т-Банк-7"
+              data-date="2025-01-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
+              <span>янв 2025</span>
             </div>
-            <h3>Рестораны изменено</h3>
-            <p>Т-Банк / Premium Bronze: Рестораны изменено с 2 посещения в месяц по 1000 ₽; Не более суток до даты вылета, по 1 тыс ₽ на каждый посадочный, только при вылете, мгновенная компенсация по кнопке в приложении или через чат, разбивать чек не требуется, расходует лимит бизнес-залов, подробнее; в вопросе #55; . на 2 посещения в месяц по 1000 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Bronze</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>2 посещения в месяц по 1000 ₽; Не более суток до даты вылета, по 1 тыс ₽ на каждый посадочный, только при вылете, мгновенная компенсация по кнопке в приложении или через чат, разбивать чек не требуется, расходует лимит бизнес-залов, подробнее; в вопросе #55; .</dd></div>
-              <div><dt>Стало</dt><dd>2 посещения в месяц по 1000 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Уровень «Broze» в Т-Банке стало возможно получить за покупку на брокерский счет 500 акций Т-Технологий.</p>
             <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
           </article>
 
           <article class="change js-change-card"
-              data-change-id="tbank_tbank_silver_Страхование_20260713_17578770"
-              data-category="Страхование"
-              data-date="2026-07-13">
+              data-change-id="Т-Банк-8"
+              data-date="2025-01-01">
             <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
+              <span>янв 2025</span>
             </div>
-            <h3>Страхование изменено</h3>
-            <p>Т-Банк / Premium Silver: Страхование изменено с $100/100 тыс, 45 дн, ассистанс Евразия Ассистанс; Примерная стоимость на 2 взрослых ≈ 20 000 ₽ на $100/100 тыс, 45 дн, ассистанс Евразия Ассистанс</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Silver</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$100/100 тыс, 45 дн, ассистанс Евразия Ассистанс; Примерная стоимость на 2 взрослых ≈ 20 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$100/100 тыс, 45 дн, ассистанс Евразия Ассистанс</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="tbank_tbank_silver_Прочее_20260713_575f82fe"
-              data-category="Прочее"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Прочее</span>
-              
-            </div>
-            <h3>Такси / транспорт изменено</h3>
-            <p>Т-Банк / Premium Silver: Такси / транспорт изменено с Каршеринг 1 посещение в месяц (по 500 ₽); Компенсация одной поездки на каршеринге до 500 ₽ по кнопке в приложении, мерчант «YANDEX.DRIVE», «DELIMOBIL», «CITYDRIVE», «BELKACAR» на Каршеринг 1 посещение в месяц (по 500 ₽)</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Silver</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>Каршеринг 1 посещение в месяц (по 500 ₽); Компенсация одной поездки на каршеринге до 500 ₽ по кнопке в приложении, мерчант «YANDEX.DRIVE», «DELIMOBIL», «CITYDRIVE», «BELKACAR»</dd></div>
-              <div><dt>Стало</dt><dd>Каршеринг 1 посещение в месяц (по 500 ₽)</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="tbank_tbank_silver_Партнерские_предложения_20260713_d29e5031"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Т-Банк / Premium Silver: Рестораны изменено с 4 посещения в месяц по 1000 ₽; Не более суток до даты вылета, по 1 тыс ₽ на каждый посадочный, только при вылете, мгновенная компенсация по кнопке в приложении или через чат, разбивать чек не требуется, расходует лимит бизнес-залов, подробнее; в вопросе #55; . на 4 посещения в месяц по 1000 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Silver</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>4 посещения в месяц по 1000 ₽; Не более суток до даты вылета, по 1 тыс ₽ на каждый посадочный, только при вылете, мгновенная компенсация по кнопке в приложении или через чат, разбивать чек не требуется, расходует лимит бизнес-залов, подробнее; в вопросе #55; .</dd></div>
-              <div><dt>Стало</dt><dd>4 посещения в месяц по 1000 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="tbank_tbank_gold_Страхование_20260713_61ae0b48"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>Т-Банк / Premium Gold: Страхование изменено с $100/100 тыс, 45 дн, ассистанс Евразия Ассистанс; Примерная стоимость на 2 взрослых ≈ 20 000 ₽ на $100/100 тыс, 45 дн, ассистанс Евразия Ассистанс</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Gold</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$100/100 тыс, 45 дн, ассистанс Евразия Ассистанс; Примерная стоимость на 2 взрослых ≈ 20 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$100/100 тыс, 45 дн, ассистанс Евразия Ассистанс</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="tbank_tbank_gold_Партнерские_предложения_20260713_d500a2a5"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Т-Банк / Premium Gold: Рестораны изменено с 6 посещений в месяц по 2000 ₽; Не более суток до даты вылета, по 2 тыс ₽ в РФ и по 25$ за границей на каждый посадочный, только при вылете, мгновенная компенсация по кнопке в приложении или через чат, разбивать чек не требуется, расходует лимит бизнес-залов, подробнее; в вопросе #55; . на 6 посещений в месяц по 2000 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Premium Gold</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>6 посещений в месяц по 2000 ₽; Не более суток до даты вылета, по 2 тыс ₽ в РФ и по 25$ за границей на каждый посадочный, только при вылете, мгновенная компенсация по кнопке в приложении или через чат, разбивать чек не требуется, расходует лимит бизнес-залов, подробнее; в вопросе #55; .</dd></div>
-              <div><dt>Стало</dt><dd>6 посещений в месяц по 2000 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="tbank_tbank_diamond_Страхование_20260713_cd61307b"
-              data-category="Страхование"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Страхование</span>
-              
-            </div>
-            <h3>Страхование изменено</h3>
-            <p>Т-Банк / Private (Diamond): Страхование изменено с $100/100 тыс, 45 дн, ассистанс Евразия Ассистанс; Примерная стоимость на 2 взрослых ≈ 20 000 ₽ на $100/100 тыс, 45 дн, ассистанс Евразия Ассистанс</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Private (Diamond)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>$100/100 тыс, 45 дн, ассистанс Евразия Ассистанс; Примерная стоимость на 2 взрослых ≈ 20 000 ₽</dd></div>
-              <div><dt>Стало</dt><dd>$100/100 тыс, 45 дн, ассистанс Евразия Ассистанс</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
-            <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
-          </article>
-
-          <article class="change js-change-card"
-              data-change-id="tbank_tbank_diamond_Партнерские_предложения_20260713_2e153af4"
-              data-category="Партнерские предложения"
-              data-date="2026-07-13">
-            <div class="change-head">
-              <span>2026-07-13</span>
-              <span>Партнерские предложения</span>
-              
-            </div>
-            <h3>Рестораны изменено</h3>
-            <p>Т-Банк / Private (Diamond): Рестораны изменено с 10 посещений в месяц по 2000 ₽; Не более суток до даты вылета, по 2 тыс ₽ в РФ и по 25$ за границей на каждый посадочный, только при вылете, мгновенная компенсация по кнопке в приложении или через чат, разбивать чек не требуется, подробнее; в вопросе #55; . на 10 посещений в месяц по 2000 ₽</p>
-            <dl>
-              <div><dt>Продукт</dt><dd>Private (Diamond)</dd></div>
-              <div><dt>Вступает в силу</dt><dd>не указано</dd></div>
-              <div><dt>Было</dt><dd>10 посещений в месяц по 2000 ₽; Не более суток до даты вылета, по 2 тыс ₽ в РФ и по 25$ за границей на каждый посадочный, только при вылете, мгновенная компенсация по кнопке в приложении или через чат, разбивать чек не требуется, подробнее; в вопросе #55; .</dd></div>
-              <div><dt>Стало</dt><dd>10 посещений в месяц по 2000 ₽</dd></div>
-              <div><dt>Статус</dt><dd>Подтверждено</dd></div>
-            </dl>
-            
+            <p>Росбанк присоединился к Т-Банку. Больше не отслеживаем премиум Росбанка.</p>
             <a href="https://premiumbanking.info/tbank" target="_blank" rel="noreferrer">Источник</a>
           </article>
         </div>
@@ -2974,7 +966,6 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 function changeFilters(root) {
   return {
     bank: root.querySelector('.js-change-bank-filter'),
-    category: root.querySelector('.js-change-category-filter'),
     period: root.querySelector('.js-change-period-filter')
   };
 }
@@ -2991,15 +982,12 @@ function withinChangePeriod(dateText, days) {
 function applyChangeFilters(root) {
   const filters = changeFilters(root);
   const bankValue = filters.bank.value;
-  const categoryValue = filters.category.value;
   const periodValue = filters.period.value;
   root.querySelectorAll('.js-change-bank').forEach(bank => {
     const bankMatch = !bankValue || bank.dataset.bank === bankValue;
     let visibleCount = 0;
     bank.querySelectorAll('.js-change-card').forEach(change => {
-      const visible = bankMatch
-        && (!categoryValue || change.dataset.category === categoryValue)
-        && withinChangePeriod(change.dataset.date, periodValue);
+      const visible = bankMatch && withinChangePeriod(change.dataset.date, periodValue);
       change.hidden = !visible;
       if (visible) visibleCount += 1;
     });
