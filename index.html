@@ -40,7 +40,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .stats b { display: block; font-size: 24px; color: var(--green);
   font-family: ui-monospace, "SF Mono", Menlo, monospace; }
 .stats span { color: var(--muted); font-size: 13px; }
-.pickers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+.pickers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
   margin-top: 22px; }
 .picker { background: var(--surface); border: 1px solid var(--line);
   border-radius: 8px; min-width: 0; padding: 14px 16px;
@@ -59,7 +59,9 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   border-radius: 8px; background: #fff8e8; color: #6f5a25; font-size: 14px; }
 .js-ready .js-warning { display: none; }
 #compare { margin-top: 22px; }
-.cmp-head { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cmp-head { display: grid; gap: 16px; }
+.cmp-head.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cmp-head.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .cmp-col { background: var(--surface); border: 1px solid var(--line-strong);
   border-top: 3px solid var(--green); border-radius: 8px; min-width: 0;
   padding: 14px 16px; box-shadow: var(--shadow); }
@@ -75,8 +77,10 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   border: 1px solid var(--line-strong); border-radius: 8px;
   background: var(--surface); box-shadow: var(--shadow); }
 .cmp-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-.cmp-table col.attr { width: 18%; }
-.cmp-table col.side { width: 41%; }
+.cmp-table.cols-2 col.attr { width: 18%; }
+.cmp-table.cols-2 col.side { width: 41%; }
+.cmp-table.cols-3 col.attr { width: 16%; }
+.cmp-table.cols-3 col.side { width: 28%; }
 .cmp-table th, .cmp-table td { text-align: left; padding: 10px 12px;
   border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14px;
   overflow-wrap: anywhere; }
@@ -254,7 +258,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
     <section class="hero">
       <p class="eyebrow">Премиальный банкинг РФ</p>
       <h1>Сравнение уровней пакетов</h1>
-      <p class="lead">Выберите два банка и уровень пакета у каждого —
+      <p class="lead">Выберите два или три банка и уровень пакета у каждого —
       сравнение по ключевым условиям и привилегиям появится сразу,
       без прокрутки страницы.</p>
       <div class="stats">
@@ -913,6 +917,12 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <h3 class="lvl-title" hidden>Уровень пакета</h3>
         <div class="chip-row levels"></div>
       </div>
+      <div class="picker" data-side="c">
+        <h2>Банк 3</h2>
+        <div class="chip-row banks"><button type="button" class="chip" data-bank-index="0">Сбер</button><button type="button" class="chip" data-bank-index="1">Альфа-Банк</button><button type="button" class="chip" data-bank-index="2">ВТБ</button><button type="button" class="chip" data-bank-index="3">Газпромбанк</button><button type="button" class="chip" data-bank-index="4">Озон Банк</button><button type="button" class="chip" data-bank-index="5">Райффайзен Банк</button><button type="button" class="chip" data-bank-index="6">Т-Банк</button></div>
+        <h3 class="lvl-title" hidden>Уровень пакета</h3>
+        <div class="chip-row levels"></div>
+      </div>
     </section>
     <p id="js-warning" class="js-warning">Если банки не выбираются, файл открыт
     во встроенном просмотрщике без JavaScript. Нажмите «Поделиться» → «Открыть
@@ -922,20 +932,21 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
       <div class="cmp-head">
         <div class="cmp-col" data-head="a"></div>
         <div class="cmp-col" data-head="b"></div>
+        <div class="cmp-col" data-head="c"></div>
       </div>
       <div class="cmp-scroll">
         <table class="cmp-table">
           <colgroup>
-            <col class="attr"><col class="side"><col class="side">
+            <col class="attr"><col class="side" data-col="a"><col class="side" data-col="b"><col class="side" data-col="c">
           </colgroup>
           <thead>
-            <tr><th>Атрибут</th><th data-th="a"></th><th data-th="b"></th></tr>
+            <tr><th>Атрибут</th><th data-th="a"></th><th data-th="b"></th><th data-th="c"></th></tr>
           </thead>
           <tbody></tbody>
         </table>
       </div>
     </section>
-    <p id="hint" class="hint">Выберите банк и уровень пакета слева и справа —
+    <p id="hint" class="hint">Выберите банк и уровень пакета минимум в двух колонках —
     сравнение появится здесь.</p>
 
     <footer class="footer">
@@ -1037,7 +1048,8 @@ function setChangesPanelStorage(key, value) {
 }
 
 const DATA = JSON.parse(document.getElementById('data').textContent);
-const state = { a: { bank: null, level: null }, b: { bank: null, level: null } };
+const SIDES = ['a', 'b', 'c'];
+const state = Object.fromEntries(SIDES.map((side) => [side, { bank: null, level: null }]));
 document.documentElement.classList.add('js-ready');
 
 function el(tag, cls, text) {
@@ -1099,50 +1111,96 @@ function selected(side) {
   return { bank: DATA[s.bank].bank, ...DATA[s.bank].levels[s.level] };
 }
 
-function renderHead(node, item, other) {
+function renderHead(node, item) {
   node.innerHTML = '';
   node.appendChild(el('h2', '', item.bank + ' — ' + item.tier));
 }
 
 function renderCompare() {
-  const a = selected('a'), b = selected('b');
+  const selectedItems = SIDES
+    .map((side) => ({ side, item: selected(side) }))
+    .filter((entry) => entry.item);
   const cmp = document.getElementById('compare');
   const hint = document.getElementById('hint');
-  if (!a || !b) { cmp.hidden = true; hint.hidden = false; return; }
+  if (selectedItems.length < 2) { cmp.hidden = true; hint.hidden = false; return; }
   cmp.hidden = false; hint.hidden = true;
 
-  renderHead(cmp.querySelector('[data-head="a"]'), a, b);
-  renderHead(cmp.querySelector('[data-head="b"]'), b, a);
-  cmp.querySelector('[data-th="a"]').textContent = a.bank + ' — ' + a.tier;
-  cmp.querySelector('[data-th="b"]').textContent = b.bank + ' — ' + b.tier;
+  const selectedSides = new Set(selectedItems.map((entry) => entry.side));
+  const cmpHead = cmp.querySelector('.cmp-head');
+  const table = cmp.querySelector('.cmp-table');
+  cmpHead.classList.toggle('cols-2', selectedItems.length === 2);
+  cmpHead.classList.toggle('cols-3', selectedItems.length === 3);
+  table.classList.toggle('cols-2', selectedItems.length === 2);
+  table.classList.toggle('cols-3', selectedItems.length === 3);
+
+  SIDES.forEach((side) => {
+    const entry = selectedItems.find((item) => item.side === side);
+    const head = cmp.querySelector(`[data-head="${side}"]`);
+    const th = cmp.querySelector(`[data-th="${side}"]`);
+    const col = cmp.querySelector(`[data-col="${side}"]`);
+    head.hidden = !selectedSides.has(side);
+    th.hidden = !selectedSides.has(side);
+    col.hidden = !selectedSides.has(side);
+    col.style.display = selectedSides.has(side) ? '' : 'none';
+    if (entry) {
+      renderHead(head, entry.item);
+      th.textContent = entry.item.bank + ' — ' + entry.item.tier;
+    } else {
+      head.innerHTML = '';
+      th.textContent = '';
+    }
+  });
 
   const tbody = cmp.querySelector('tbody');
   tbody.innerHTML = '';
-  a.attrs.forEach((attrA, i) => {
-    const attrB = b.attrs[i];
-    if (isEmptyDisplay(attrA.value) && isEmptyDisplay(attrB.value)) return;
+  selectedItems[0].item.attrs.forEach((baseAttr, i) => {
+    const attrsBySide = Object.fromEntries(
+      selectedItems.map((entry) => [entry.side, entry.item.attrs[i]])
+    );
+    const selectedAttrs = selectedItems.map((entry) => attrsBySide[entry.side]);
+    if (selectedAttrs.every((attr) => isEmptyDisplay(attr.value))) return;
     const tr = el('tr');
-    const labelCell = el('td', '', attrA.label);
+    const labelCell = el('td', '', baseAttr.label);
     tr.appendChild(labelCell);
-    const tdA = el('td');
-    const tdB = el('td');
-    renderAttrValue(tdA, attrA);
-    renderAttrValue(tdB, attrB);
-    tdA.dataset.label = a.bank + ' — ' + a.tier;
-    tdB.dataset.label = b.bank + ' — ' + b.tier;
-    if (attrA.note) tdA.title = attrA.note;
-    if (attrB.note) tdB.title = attrB.note;
-    if (attrA.score !== null && attrB.score !== null
-        && attrA.score !== attrB.score) {
-      const winner = attrA.score > attrB.score ? tdA : tdB;
-      winner.classList.add('win');
-      winner.appendChild(el('span', 'tag', 'сильнее'));
-    }
-    tr.appendChild(tdA);
-    tr.appendChild(tdB);
+
+    const cellsBySide = {};
+    SIDES.forEach((side) => {
+      const td = el('td');
+      td.hidden = !selectedSides.has(side);
+      if (selectedSides.has(side)) {
+        const entry = selectedItems.find((item) => item.side === side);
+        const attr = attrsBySide[side];
+        renderAttrValue(td, attr);
+        td.dataset.label = entry.item.bank + ' — ' + entry.item.tier;
+        if (attr.note) td.title = attr.note;
+      }
+      cellsBySide[side] = td;
+      tr.appendChild(td);
+    });
+
+    highlightWinners(selectedItems, attrsBySide, cellsBySide);
     tbody.appendChild(tr);
   });
   cmp.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function highlightWinners(selectedItems, attrsBySide, cellsBySide) {
+  const comparable = selectedItems
+    .map((entry) => ({ side: entry.side, rawScore: attrsBySide[entry.side].score }))
+    .filter((entry) => entry.rawScore !== null && entry.rawScore !== undefined)
+    .map((entry) => ({ side: entry.side, score: Number(entry.rawScore) }))
+    .filter((entry) => Number.isFinite(entry.score));
+  if (comparable.length < 2) return;
+  const scores = comparable.map((entry) => entry.score);
+  const maxScore = Math.max(...scores);
+  const minScore = Math.min(...scores);
+  if (maxScore === minScore) return;
+  comparable
+    .filter((entry) => entry.score === maxScore)
+    .forEach((entry) => {
+      cellsBySide[entry.side].classList.add('win');
+      cellsBySide[entry.side].appendChild(el('span', 'tag', 'сильнее'));
+    });
 }
 
 function isEmptyDisplay(value) {
@@ -1210,8 +1268,9 @@ function hasMixedBenefitStatuses(items) {
   return statuses.size > 1;
 }
 
-renderBanks('a');
-renderBanks('b');
+SIDES.forEach((side) => {
+  renderBanks(side);
+});
 initChangesApp(document.querySelector('.changes-app'));
 initChangesPanel(document.querySelector('.js-changes-panel'));
 </script>
