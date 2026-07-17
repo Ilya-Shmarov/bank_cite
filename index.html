@@ -59,9 +59,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   border-radius: 8px; background: #fff8e8; color: #6f5a25; font-size: 14px; }
 .js-ready .js-warning { display: none; }
 #compare { margin-top: 22px; }
-.cmp-head { display: grid; gap: 16px; }
-.cmp-head.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.cmp-head.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cmp-head { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .cmp-col { background: var(--surface); border: 1px solid var(--line-strong);
   border-top: 3px solid var(--green); border-radius: 8px; min-width: 0;
   padding: 14px 16px; box-shadow: var(--shadow); }
@@ -77,10 +75,8 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   border: 1px solid var(--line-strong); border-radius: 8px;
   background: var(--surface); box-shadow: var(--shadow); }
 .cmp-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-.cmp-table.cols-2 col.attr { width: 18%; }
-.cmp-table.cols-2 col.side { width: 41%; }
-.cmp-table.cols-3 col.attr { width: 16%; }
-.cmp-table.cols-3 col.side { width: 28%; }
+.cmp-table col.attr { width: 16%; }
+.cmp-table col.side { width: 28%; }
 .cmp-table th, .cmp-table td { text-align: left; padding: 10px 12px;
   border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14px;
   overflow-wrap: anywhere; }
@@ -946,7 +942,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         </table>
       </div>
     </section>
-    <p id="hint" class="hint">Выберите банк и уровень пакета минимум в двух колонках —
+    <p id="hint" class="hint">Выберите банк и уровень пакета во всех трёх колонках —
     сравнение появится здесь.</p>
 
     <footer class="footer">
@@ -1122,33 +1118,15 @@ function renderCompare() {
     .filter((entry) => entry.item);
   const cmp = document.getElementById('compare');
   const hint = document.getElementById('hint');
-  if (selectedItems.length < 2) { cmp.hidden = true; hint.hidden = false; return; }
+  if (selectedItems.length < SIDES.length) { cmp.hidden = true; hint.hidden = false; return; }
   cmp.hidden = false; hint.hidden = true;
-
-  const selectedSides = new Set(selectedItems.map((entry) => entry.side));
-  const cmpHead = cmp.querySelector('.cmp-head');
-  const table = cmp.querySelector('.cmp-table');
-  cmpHead.classList.toggle('cols-2', selectedItems.length === 2);
-  cmpHead.classList.toggle('cols-3', selectedItems.length === 3);
-  table.classList.toggle('cols-2', selectedItems.length === 2);
-  table.classList.toggle('cols-3', selectedItems.length === 3);
 
   SIDES.forEach((side) => {
     const entry = selectedItems.find((item) => item.side === side);
     const head = cmp.querySelector(`[data-head="${side}"]`);
     const th = cmp.querySelector(`[data-th="${side}"]`);
-    const col = cmp.querySelector(`[data-col="${side}"]`);
-    head.hidden = !selectedSides.has(side);
-    th.hidden = !selectedSides.has(side);
-    col.hidden = !selectedSides.has(side);
-    col.style.display = selectedSides.has(side) ? '' : 'none';
-    if (entry) {
-      renderHead(head, entry.item);
-      th.textContent = entry.item.bank + ' — ' + entry.item.tier;
-    } else {
-      head.innerHTML = '';
-      th.textContent = '';
-    }
+    renderHead(head, entry.item);
+    th.textContent = entry.item.bank + ' — ' + entry.item.tier;
   });
 
   const tbody = cmp.querySelector('tbody');
@@ -1166,14 +1144,11 @@ function renderCompare() {
     const cellsBySide = {};
     SIDES.forEach((side) => {
       const td = el('td');
-      td.hidden = !selectedSides.has(side);
-      if (selectedSides.has(side)) {
-        const entry = selectedItems.find((item) => item.side === side);
-        const attr = attrsBySide[side];
-        renderAttrValue(td, attr);
-        td.dataset.label = entry.item.bank + ' — ' + entry.item.tier;
-        if (attr.note) td.title = attr.note;
-      }
+      const entry = selectedItems.find((item) => item.side === side);
+      const attr = attrsBySide[side];
+      renderAttrValue(td, attr);
+      td.dataset.label = entry.item.bank + ' — ' + entry.item.tier;
+      if (attr.note) td.title = attr.note;
       cellsBySide[side] = td;
       tr.appendChild(td);
     });
