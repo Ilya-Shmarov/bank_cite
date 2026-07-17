@@ -58,8 +58,22 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .js-warning { margin: 14px 0 0; padding: 12px 14px; border: 1px solid var(--line);
   border-radius: 8px; background: #fff8e8; color: #6f5a25; font-size: 14px; }
 .js-ready .js-warning { display: none; }
-#compare { margin-top: 22px; }
-.cmp-head { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+#compare {
+  --compare-level-count: 3;
+  --compare-attr-column: minmax(8.5rem, 0.38fr);
+  --compare-level-column: minmax(0, 1fr);
+  --compare-grid-template:
+    var(--compare-attr-column)
+    repeat(var(--compare-level-count), var(--compare-level-column));
+  --compare-cell-padding: 10px 12px;
+  margin-top: 22px;
+}
+.cmp-head {
+  display: grid;
+  grid-template-columns: var(--compare-grid-template);
+  gap: 0;
+}
+.cmp-attr-spacer { min-width: 0; }
 .cmp-col { background: var(--surface); border: 1px solid var(--line-strong);
   border-top: 3px solid var(--green); border-radius: 8px; min-width: 0;
   padding: 14px 16px; box-shadow: var(--shadow); }
@@ -71,17 +85,21 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .method { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
 .method summary { cursor: pointer; font-weight: 700; color: var(--ink); }
 .method p { margin: 6px 0 0; max-width: 900px; }
-.cmp-scroll { margin-top: 12px; max-height: 62vh; overflow-y: auto;
+.cmp-scroll { margin-top: 12px; max-height: 62vh; overflow: auto;
   border: 1px solid var(--line-strong); border-radius: 8px;
   background: var(--surface); box-shadow: var(--shadow); }
-.cmp-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-.cmp-table col.attr { width: 10%; }
-.cmp-table col.side { width: 30%; }
+.cmp-table { display: block; width: 100%; border-collapse: separate; border-spacing: 0; }
+.cmp-table thead,
+.cmp-table tbody { display: block; }
+.cmp-table tr {
+  display: grid;
+  grid-template-columns: var(--compare-grid-template);
+}
 .cmp-table th, .cmp-table td { text-align: left; padding: 10px 12px;
   border-bottom: 1px solid var(--line); vertical-align: top; font-size: 14px;
-  overflow-wrap: anywhere; }
+  min-width: 0; overflow-wrap: anywhere; }
 .cmp-table td:not(:first-child) { white-space: pre-line; }
-.cmp-table thead th { position: sticky; top: 0; background: #F7F9F5;
+.cmp-table thead th { background: #F7F9F5;
   color: var(--muted); font-size: 12px; text-transform: uppercase; z-index: 1;
   box-shadow: 0 1px 0 var(--line); }
 .cmp-table td:first-child { color: var(--muted); font-size: 13px;
@@ -109,6 +127,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   h1 { font-size: 32px; }
   .stats div { flex: 1 1 138px; min-width: 0; }
   .pickers, .cmp-head { grid-template-columns: 1fr; }
+  .cmp-attr-spacer { display: none; }
   .picker { padding: 14px; }
   .chip-row { gap: 8px; }
   .chip { flex: 1 1 auto; justify-content: center; min-width: min(46%, 220px); }
@@ -925,16 +944,14 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
     в Safari» или откройте этот HTML в Chrome.</p>
 
     <section id="compare" hidden>
-      <div class="cmp-head">
-        <div class="cmp-col" data-head="a"></div>
-        <div class="cmp-col" data-head="b"></div>
-        <div class="cmp-col" data-head="c"></div>
-      </div>
       <div class="cmp-scroll">
+        <div class="cmp-head">
+          <div class="cmp-attr-spacer" aria-hidden="true"></div>
+          <div class="cmp-col" data-head="a"></div>
+          <div class="cmp-col" data-head="b"></div>
+          <div class="cmp-col" data-head="c"></div>
+        </div>
         <table class="cmp-table">
-          <colgroup>
-            <col class="attr"><col class="side" data-col="a"><col class="side" data-col="b"><col class="side" data-col="c">
-          </colgroup>
           <thead>
             <tr><th>Атрибут</th><th data-th="a"></th><th data-th="b"></th><th data-th="c"></th></tr>
           </thead>
@@ -1120,6 +1137,7 @@ function renderCompare() {
   const hint = document.getElementById('hint');
   if (selectedItems.length < SIDES.length) { cmp.hidden = true; hint.hidden = false; return; }
   cmp.hidden = false; hint.hidden = true;
+  cmp.style.setProperty('--compare-level-count', String(selectedItems.length));
 
   SIDES.forEach((side) => {
     const entry = selectedItems.find((item) => item.side === side);
