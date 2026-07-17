@@ -1062,6 +1062,7 @@ function setChangesPanelStorage(key, value) {
 
 const DATA = JSON.parse(document.getElementById('data').textContent);
 const SIDES = ['a', 'b', 'c'];
+const ALWAYS_SHOW_FIELDS = new Set(['transfers_payments', 'cash_withdrawal', 'supreme']);
 const state = Object.fromEntries(SIDES.map((side) => [side, { bank: null, level: null }]));
 document.documentElement.classList.add('js-ready');
 
@@ -1154,7 +1155,8 @@ function renderCompare() {
       selectedItems.map((entry) => [entry.side, entry.item.attrs[i]])
     );
     const selectedAttrs = selectedItems.map((entry) => attrsBySide[entry.side]);
-    if (selectedAttrs.every((attr) => isEmptyDisplay(attr.value))) return;
+    if (!ALWAYS_SHOW_FIELDS.has(baseAttr.id)
+        && selectedAttrs.every((attr) => isEmptyDisplay(attr.value))) return;
     const tr = el('tr');
     const labelCell = el('td', '', baseAttr.label);
     tr.appendChild(labelCell);
