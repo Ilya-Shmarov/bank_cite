@@ -1369,42 +1369,46 @@ function highlightWinners(selectedItems, attrsBySide, cellsBySide) {
 }
 
 function rankEvaluations(entries) {
-  const unavailable = entries.filter((entry) => entry.evaluation.status !== 'comparable');
-  if (unavailable.length) {
-    const reason = unavailable.some((entry) => entry.evaluation.status === 'missing')
-      ? 'Ранг не назначен: в сравнении есть отсутствующие данные.'
-      : 'Ранг не назначен: одно или несколько условий несопоставимы.';
-    return entries.map((entry) => ({
-      side: entry.side,
-      status: entry.evaluation.status === 'missing' ? 'missing' : 'incomparable',
-      reason: entry.evaluation.status === 'comparable'
-        ? reason
-        : entry.evaluation.reason || reason
-    }));
-  }
+  const results = new Map(entries.map((entry) => [entry.side, {
+    side: entry.side,
+    status: entry.evaluation.status,
+    reason: entry.evaluation.reason || 'Для условия нет доказуемого цветового ранга.'
+  }]));
+  const comparable = entries.filter(
+    (entry) => entry.evaluation.status === 'comparable'
+  );
+  if (comparable.length < 2) return entries.map((entry) => results.get(entry.side));
 
-  const totals = new Map(entries.map((entry) => [entry.side, 0]));
-  for (let i = 0; i < entries.length; i += 1) {
-    for (let j = i + 1; j < entries.length; j += 1) {
-      const comparison = compareEvaluations(entries[i].evaluation, entries[j].evaluation);
+  const totals = new Map(comparable.map((entry) => [entry.side, 0]));
+  for (let i = 0; i < comparable.length; i += 1) {
+    for (let j = i + 1; j < comparable.length; j += 1) {
+      const comparison = compareEvaluations(
+        comparable[i].evaluation, comparable[j].evaluation
+      );
       if (comparison.order === null) {
         const reason = 'Ранг не назначен: ' + comparison.reason;
-        return entries.map((entry) => ({
+        comparable.forEach((entry) => results.set(entry.side, {
           side: entry.side, status: 'incomparable', reason
         }));
+        return entries.map((entry) => results.get(entry.side));
       }
-      totals.set(entries[i].side, totals.get(entries[i].side) + comparison.order);
-      totals.set(entries[j].side, totals.get(entries[j].side) - comparison.order);
+      totals.set(
+        comparable[i].side, totals.get(comparable[i].side) + comparison.order
+      );
+      totals.set(
+        comparable[j].side, totals.get(comparable[j].side) - comparison.order
+      );
     }
   }
 
   const uniqueTotals = [...new Set(totals.values())].sort((a, b) => b - a);
   if (uniqueTotals.length === 1) {
-    return entries.map((entry) => ({
+    comparable.forEach((entry) => results.set(entry.side, {
       side: entry.side,
       status: 'equal',
       reason: 'Сопоставимые условия равны; цветовой ранг не назначен.'
     }));
+    return entries.map((entry) => results.get(entry.side));
   }
 
   const visualRanks = uniqueTotals.length === 2
@@ -1417,21 +1421,22 @@ function rankEvaluations(entries) {
         { cls: 'rank-mid', label: 'среднее' },
         { cls: 'rank-low', label: 'слабее' }
       ];
-  return entries.map((entry) => {
+  comparable.forEach((entry) => {
     const groupIndex = uniqueTotals.indexOf(totals.get(entry.side));
-    const groupSize = entries.filter(
+    const groupSize = comparable.filter(
       (candidate) => totals.get(candidate.side) === totals.get(entry.side)
     ).length;
     const visual = visualRanks[groupIndex];
-    return {
+    results.set(entry.side, {
       side: entry.side,
       status: groupSize > 1 ? 'equal' : 'comparable',
       cls: visual.cls,
       label: visual.label,
       summary: entry.evaluation.summary,
       reason: entry.evaluation.reason
-    };
+    });
   });
+  return entries.map((entry) => results.get(entry.side));
 }
 
 function compareEvaluations(left, right) {
