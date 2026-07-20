@@ -58,6 +58,15 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .js-warning { margin: 14px 0 0; padding: 12px 14px; border: 1px solid var(--line);
   border-radius: 8px; background: #fff8e8; color: #6f5a25; font-size: 14px; }
 .js-ready .js-warning { display: none; }
+.compare-actions { display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 12px; }
+.print-title, .print-date { display: none; }
+.pdf-button { min-height: 44px; border: 1px solid var(--green);
+  border-radius: 8px; background: var(--green); color: #fff; cursor: pointer;
+  padding: 10px 14px; font: inherit; font-weight: 700; }
+.pdf-button:hover, .pdf-button:focus-visible { background: #0f7a41;
+  border-color: #0f7a41; outline: 2px solid rgba(24, 143, 79, 0.24);
+  outline-offset: 2px; }
 #compare {
   --compare-level-count: 3;
   --compare-attr-column: minmax(8.5rem, 0.38fr);
@@ -146,6 +155,47 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   .cmp-table td[data-label]::before { content: attr(data-label); display: block;
     margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 700; }
   .cmp-table td.win { box-shadow: inset 3px 0 0 var(--green); }
+}
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  :root {
+    --bg: #fff;
+    --surface: #fff;
+    --line: #d4d8d2;
+    --line-strong: #b8c0b5;
+    --green-soft: #eef7f2;
+  }
+  body { background: #fff; color: #111; font-size: 10px; line-height: 1.35; }
+  .page { max-width: none; margin: 0; padding: 0; }
+  .hero, .pickers, #hint, #js-warning, .footer, .compare-actions .pdf-button {
+    display: none !important;
+  }
+  #compare { display: block !important; margin: 0; }
+  .compare-actions { display: block; margin: 0 0 8px; }
+  .print-title { display: block; margin: 0; font-size: 18px; line-height: 1.2;
+    font-weight: 800; color: #111; }
+  .print-date { display: block; margin: 3px 0 0; color: #4f5c55; font-size: 10px; }
+  .cmp-scroll { max-height: none; overflow: visible; margin-top: 8px;
+    border: 1px solid var(--line-strong); border-radius: 0; box-shadow: none; }
+  .cmp-head { break-inside: avoid; page-break-inside: avoid; }
+  .cmp-col { border-radius: 0; box-shadow: none; padding: 7px 8px;
+    border-top-width: 2px; }
+  .cmp-col h2 { margin: 0; font-size: 12px; line-height: 1.25; }
+  .cmp-table, .cmp-table thead, .cmp-table tbody { display: block !important; }
+  .cmp-table tr { display: grid !important; grid-template-columns: var(--compare-grid-template); }
+  .cmp-table thead { display: block !important; }
+  .cmp-table th, .cmp-table td { padding: 5px 6px; font-size: 9px;
+    line-height: 1.28; color: #111; overflow-wrap: anywhere; word-break: normal; }
+  .cmp-table thead th { color: #4f5c55; font-size: 8px; box-shadow: none; }
+  .cmp-table td:first-child { color: #4f5c55; font-size: 8px; font-weight: 700; }
+  .cmp-table tr { break-inside: avoid; page-break-inside: avoid; }
+  .cmp-table td.win { background: var(--green-soft); box-shadow: inset 2px 0 0 var(--green); }
+  .cmp-table td .tag { border: 1px solid #cfe1d6; padding: 0 4px; font-size: 7px;
+    background: #f5faf7; color: #146c40; }
+  .benefits-list { gap: 3px; }
+  .benefit-rule, .attr-details, .attr-details p { font-size: 8px; color: #4f5c55; }
+  .attr-details summary { display: none; }
+  .attr-details p { margin: 3px 0 0; color: #111; }
 }
 
 .changes-app {
@@ -944,6 +994,13 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
     в Safari» или откройте этот HTML в Chrome.</p>
 
     <section id="compare" hidden>
+      <div class="compare-actions">
+        <div>
+          <p class="print-title">Сравнение премиальных пакетов</p>
+          <p class="print-date">Дата данных: 2026-07-20</p>
+        </div>
+        <button type="button" class="pdf-button" id="pdf-button">Выгрузить PDF</button>
+      </div>
       <div class="cmp-scroll">
         <div class="cmp-head">
           <div class="cmp-attr-spacer" aria-hidden="true"></div>
@@ -1179,6 +1236,24 @@ function renderCompare() {
   cmp.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function exportComparePdf() {
+  const cmp = document.getElementById('compare');
+  if (!cmp || cmp.hidden) return;
+  const openedDetails = [];
+  cmp.querySelectorAll('details').forEach((details) => {
+    if (!details.open) {
+      details.open = true;
+      openedDetails.push(details);
+    }
+  });
+  const restore = () => {
+    openedDetails.forEach((details) => { details.open = false; });
+    window.removeEventListener('afterprint', restore);
+  };
+  window.addEventListener('afterprint', restore);
+  window.print();
+}
+
 function highlightWinners(selectedItems, attrsBySide, cellsBySide) {
   const comparable = selectedItems
     .map((entry) => ({ side: entry.side, rawScore: attrsBySide[entry.side].score }))
@@ -1266,6 +1341,7 @@ function hasMixedBenefitStatuses(items) {
 SIDES.forEach((side) => {
   renderBanks(side);
 });
+document.getElementById('pdf-button').addEventListener('click', exportComparePdf);
 initChangesApp(document.querySelector('.changes-app'));
 initChangesPanel(document.querySelector('.js-changes-panel'));
 </script>
