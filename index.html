@@ -114,11 +114,19 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   box-shadow: 0 1px 0 var(--line); }
 .cmp-table td:first-child { color: var(--muted); font-size: 13px;
   white-space: normal; }
-.cmp-table td.win { box-shadow: inset 3px 0 0 var(--green);
-  background: var(--green-soft); }
+.cmp-table td.rank-best, .cmp-table td.win { box-shadow: inset 3px 0 0 #2e9b62;
+  background: #f0faf4; }
+.cmp-table td.rank-mid { box-shadow: inset 3px 0 0 #d7a51d;
+  background: #fff9e8; }
+.cmp-table td.rank-low { box-shadow: inset 3px 0 0 #d16d5d;
+  background: #fff3f1; }
 .cmp-table td .tag { display: inline-block; margin-left: 6px;
   background: var(--green-soft); color: var(--green); border-radius: 999px;
   padding: 1px 8px; font-size: 11px; font-weight: 700; }
+.cmp-table td.rank-best .tag, .cmp-table td.win .tag {
+  background: #e3f4ea; color: #187347; }
+.cmp-table td.rank-mid .tag { background: #fff0bf; color: #806010; }
+.cmp-table td.rank-low .tag { background: #ffe2de; color: #9b3d31; }
 .benefits-list { list-style: none; margin: 0; padding: 0; display: grid;
   gap: 7px; }
 .benefits-list li { position: relative; padding-left: 0; }
@@ -164,7 +172,9 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   .cmp-table td:last-child { border-bottom: 0; }
   .cmp-table td[data-label]::before { content: attr(data-label); display: block;
     margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 700; }
-  .cmp-table td.win { box-shadow: inset 3px 0 0 var(--green); }
+  .cmp-table td.rank-best, .cmp-table td.win { box-shadow: inset 3px 0 0 #2e9b62; }
+  .cmp-table td.rank-mid { box-shadow: inset 3px 0 0 #d7a51d; }
+  .cmp-table td.rank-low { box-shadow: inset 3px 0 0 #d16d5d; }
 }
 @media print {
   @page { size: A4 landscape; margin: 10mm; }
@@ -199,7 +209,12 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   .cmp-table thead th { color: #4f5c55; font-size: 8px; box-shadow: none; }
   .cmp-table td:first-child { color: #4f5c55; font-size: 8px; font-weight: 700; }
   .cmp-table tr { break-inside: avoid; page-break-inside: avoid; }
-  .cmp-table td.win { background: var(--green-soft); box-shadow: inset 2px 0 0 var(--green); }
+  .cmp-table td.rank-best, .cmp-table td.win {
+    background: #f0faf4; box-shadow: inset 2px 0 0 #2e9b62; }
+  .cmp-table td.rank-mid {
+    background: #fff9e8; box-shadow: inset 2px 0 0 #d7a51d; }
+  .cmp-table td.rank-low {
+    background: #fff3f1; box-shadow: inset 2px 0 0 #d16d5d; }
   .cmp-table td .tag { border: 1px solid #cfe1d6; padding: 0 4px; font-size: 7px;
     background: #f5faf7; color: #146c40; }
   .benefits-list { gap: 3px; }
@@ -1324,14 +1339,23 @@ function highlightWinners(selectedItems, attrsBySide, cellsBySide) {
     .filter((entry) => Number.isFinite(entry.score));
   if (comparable.length < 2) return;
   const scores = comparable.map((entry) => entry.score);
-  const maxScore = Math.max(...scores);
-  const minScore = Math.min(...scores);
-  if (maxScore === minScore) return;
-  const winners = comparable.filter((entry) => entry.score === maxScore);
-  if (winners.length !== 1) return;
-  const winner = winners[0];
-  cellsBySide[winner.side].classList.add('win');
-  cellsBySide[winner.side].appendChild(el('span', 'tag', 'сильнее'));
+  const uniqueScores = [...new Set(scores)].sort((a, b) => b - a);
+  if (uniqueScores.length < 2) return;
+  const rankByScore = new Map();
+  if (uniqueScores.length === 2) {
+    rankByScore.set(uniqueScores[0], { cls: 'rank-best', label: 'сильнее' });
+    rankByScore.set(uniqueScores[1], { cls: 'rank-low', label: 'слабее' });
+  } else {
+    rankByScore.set(uniqueScores[0], { cls: 'rank-best', label: 'сильнее' });
+    rankByScore.set(uniqueScores[1], { cls: 'rank-mid', label: 'среднее' });
+    rankByScore.set(uniqueScores[2], { cls: 'rank-low', label: 'слабее' });
+  }
+  comparable.forEach((entry) => {
+    const rank = rankByScore.get(entry.score);
+    if (!rank) return;
+    cellsBySide[entry.side].classList.add(rank.cls);
+    cellsBySide[entry.side].appendChild(el('span', 'tag', rank.label));
+  });
 }
 
 function isEmptyDisplay(value) {
