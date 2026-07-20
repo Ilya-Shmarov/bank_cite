@@ -67,6 +67,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .pdf-button:hover, .pdf-button:focus-visible { background: #0f7a41;
   border-color: #0f7a41; outline: 2px solid rgba(24, 143, 79, 0.24);
   outline-offset: 2px; }
+.pdf-button:disabled { cursor: wait; opacity: 0.72; }
 #compare {
   --compare-level-count: 3;
   --compare-attr-column: minmax(8.5rem, 0.38fr);
@@ -129,6 +130,15 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .attr-details { margin-top: 8px; color: var(--muted); font-size: 13px; }
 .attr-details summary { cursor: pointer; color: var(--green); font-weight: 700; }
 .attr-details p { margin: 6px 0 0; color: var(--ink); white-space: normal; }
+.pdf-exporting #compare { width: 1120px; margin: 0; background: #fff; color: #111; }
+.pdf-exporting .compare-actions { display: block; margin: 0 0 10px; }
+.pdf-exporting .compare-actions .pdf-button { display: none; }
+.pdf-exporting .print-title { display: block; margin: 0; font-size: 24px;
+  line-height: 1.2; font-weight: 800; color: #111; }
+.pdf-exporting .print-date { display: block; margin: 4px 0 0; color: #4f5c55; }
+.pdf-exporting .cmp-scroll { max-height: none; overflow: visible; box-shadow: none; }
+.pdf-exporting .cmp-col { box-shadow: none; }
+.pdf-exporting .attr-details summary { display: none; }
 .footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line);
   color: var(--muted); font-size: 13px; }
 @media (max-width: 820px) {
@@ -1120,6 +1130,8 @@ function setChangesPanelStorage(key, value) {
 const DATA = JSON.parse(document.getElementById('data').textContent);
 const SIDES = ['a', 'b', 'c'];
 const ALWAYS_SHOW_FIELDS = new Set(['transfers_payments', 'cash_withdrawal', 'supreme']);
+const PDF_LIB_URL = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+let pdfLibraryPromise = null;
 const state = Object.fromEntries(SIDES.map((side) => [side, { bank: null, level: null }]));
 document.documentElement.classList.add('js-ready');
 
@@ -1236,9 +1248,38 @@ function renderCompare() {
   cmp.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function exportComparePdf() {
+function loadPdfLibrary() {
+  if (window.html2pdf) return Promise.resolve(window.html2pdf);
+  if (pdfLibraryPromise) return pdfLibraryPromise;
+  pdfLibraryPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = PDF_LIB_URL;
+    script.async = true;
+    script.onload = () => resolve(window.html2pdf);
+    script.onerror = () => reject(new Error('PDF library load failed'));
+    document.head.appendChild(script);
+  });
+  return pdfLibraryPromise;
+}
+
+function comparePdfFileName() {
+  const parts = SIDES
+    .map((side) => selected(side))
+    .filter(Boolean)
+    .map((item) => item.bank + ' ' + item.tier);
+  const name = 'premium-comparison-' + parts.join('-vs-');
+  return name
+    .toLowerCase()
+    .replace(/[^a-zа-яё0-9]+/gi, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 120) + '.pdf';
+}
+
+async function exportComparePdf() {
   const cmp = document.getElementById('compare');
   if (!cmp || cmp.hidden) return;
+  const button = document.getElementById('pdf-button');
+  const originalText = button.textContent;
   const openedDetails = [];
   cmp.querySelectorAll('details').forEach((details) => {
     if (!details.open) {
@@ -1248,10 +1289,31 @@ function exportComparePdf() {
   });
   const restore = () => {
     openedDetails.forEach((details) => { details.open = false; });
-    window.removeEventListener('afterprint', restore);
+    document.body.classList.remove('pdf-exporting');
+    button.disabled = false;
+    button.textContent = originalText;
   };
-  window.addEventListener('afterprint', restore);
-  window.print();
+  button.disabled = true;
+  button.textContent = 'Готовлю PDF...';
+  document.body.classList.add('pdf-exporting');
+  try {
+    const html2pdf = await loadPdfLibrary();
+    await html2pdf()
+      .set({
+        margin: [8, 8, 8, 8],
+        filename: comparePdfFileName(),
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' },
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['tr', '.cmp-col', '.benefits-list li'] }
+      })
+      .from(cmp)
+      .save();
+  } catch (_error) {
+    window.alert('Не удалось подготовить PDF. Проверьте подключение к интернету и повторите выгрузку.');
+  } finally {
+    restore();
+  }
 }
 
 function highlightWinners(selectedItems, attrsBySide, cellsBySide) {
