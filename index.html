@@ -1348,6 +1348,7 @@ async function exportComparePdf() {
 function highlightWinners(selectedItems, attrsBySide, cellsBySide) {
   const entries = selectedItems.map((entry) => ({
     side: entry.side,
+    attr: attrsBySide[entry.side],
     evaluation: attrsBySide[entry.side].evaluation || {
       status: 'missing', reason: 'Нет структурированной оценки.'
     }
@@ -1371,47 +1372,70 @@ function highlightWinners(selectedItems, attrsBySide, cellsBySide) {
 function rankEvaluations(entries) {
   const results = new Map(entries.map((entry) => [entry.side, {
     side: entry.side,
-    status: entry.evaluation.status,
-    reason: entry.evaluation.reason || 'Для условия нет доказуемого цветового ранга.'
+    status: isMissingRankEntry(entry) ? 'missing' : entry.evaluation.status,
+    reason: entry.evaluation.reason || 'Для условия нет структурированного пояснения.'
   }]));
-  const comparable = entries.filter(
-    (entry) => entry.evaluation.status === 'comparable'
+  const available = entries.filter(
+    (entry) => !isMissingRankEntry(entry)
   );
-  if (comparable.length < 2) return entries.map((entry) => results.get(entry.side));
+  if (!available.length) return entries.map((entry) => results.get(entry.side));
 
-  const totals = new Map(comparable.map((entry) => [entry.side, 0]));
-  for (let i = 0; i < comparable.length; i += 1) {
-    for (let j = i + 1; j < comparable.length; j += 1) {
-      const comparison = compareEvaluations(
-        comparable[i].evaluation, comparable[j].evaluation
-      );
-      if (comparison.order === null) {
-        const reason = 'Ранг не назначен: ' + comparison.reason;
-        comparable.forEach((entry) => results.set(entry.side, {
-          side: entry.side, status: 'incomparable', reason
-        }));
-        return entries.map((entry) => results.get(entry.side));
+  if (available.every((entry) => entry.evaluation.status === 'comparable')) {
+    const totals = new Map(available.map((entry) => [entry.side, 0]));
+    let structuredOrder = true;
+    for (let i = 0; i < available.length && structuredOrder; i += 1) {
+      for (let j = i + 1; j < available.length; j += 1) {
+        const comparison = compareEvaluations(
+          available[i].evaluation, available[j].evaluation
+        );
+        if (comparison.order === null) {
+          structuredOrder = false;
+          break;
+        }
+        totals.set(
+          available[i].side, totals.get(available[i].side) + comparison.order
+        );
+        totals.set(
+          available[j].side, totals.get(available[j].side) - comparison.order
+        );
       }
-      totals.set(
-        comparable[i].side, totals.get(comparable[i].side) + comparison.order
-      );
-      totals.set(
-        comparable[j].side, totals.get(comparable[j].side) - comparison.order
+    }
+    if (structuredOrder) {
+      return applyVisualRanks(
+        entries, available, results,
+        new Map(available.map((entry) => [entry.side, [totals.get(entry.side)]])),
+        false
       );
     }
   }
 
-  const uniqueTotals = [...new Set(totals.values())].sort((a, b) => b - a);
-  if (uniqueTotals.length === 1) {
-    comparable.forEach((entry) => results.set(entry.side, {
-      side: entry.side,
-      status: 'equal',
-      reason: 'Сопоставимые условия равны; цветовой ранг не назначен.'
-    }));
-    return entries.map((entry) => results.get(entry.side));
+  const vectors = new Map(
+    available.map((entry) => [entry.side, fallbackRankVector(entry)])
+  );
+  return applyVisualRanks(entries, available, results, vectors, true);
+}
+
+function applyVisualRanks(entries, available, results, vectors, fallbackUsed) {
+  const uniqueVectors = [];
+  available.forEach((entry) => {
+    const vector = vectors.get(entry.side);
+    if (!uniqueVectors.some((candidate) => deepEqual(candidate, vector))) {
+      uniqueVectors.push(vector);
+    }
+  });
+  uniqueVectors.sort((left, right) => -compareRankVectors(left, right));
+
+  if (available.length === 1) {
+    const entry = available[0];
+    results.set(entry.side, rankedResult(
+      entry, { cls: 'rank-best', label: 'сильнее' }, false, fallbackUsed
+    ));
+    return entries.map((item) => results.get(item.side));
   }
 
-  const visualRanks = uniqueTotals.length === 2
+  const visualRanks = uniqueVectors.length === 1
+    ? [{ cls: 'rank-mid', label: 'среднее' }]
+    : uniqueVectors.length === 2
     ? [
         { cls: 'rank-best', label: 'сильнее' },
         { cls: 'rank-low', label: 'слабее' }
@@ -1421,22 +1445,117 @@ function rankEvaluations(entries) {
         { cls: 'rank-mid', label: 'среднее' },
         { cls: 'rank-low', label: 'слабее' }
       ];
-  comparable.forEach((entry) => {
-    const groupIndex = uniqueTotals.indexOf(totals.get(entry.side));
-    const groupSize = comparable.filter(
-      (candidate) => totals.get(candidate.side) === totals.get(entry.side)
+  available.forEach((entry) => {
+    const vector = vectors.get(entry.side);
+    const groupIndex = uniqueVectors.findIndex(
+      (candidate) => deepEqual(candidate, vector)
+    );
+    const groupSize = available.filter(
+      (candidate) => deepEqual(vectors.get(candidate.side), vector)
     ).length;
-    const visual = visualRanks[groupIndex];
-    results.set(entry.side, {
-      side: entry.side,
-      status: groupSize > 1 ? 'equal' : 'comparable',
-      cls: visual.cls,
-      label: visual.label,
-      summary: entry.evaluation.summary,
-      reason: entry.evaluation.reason
-    });
+    results.set(
+      entry.side,
+      rankedResult(entry, visualRanks[groupIndex], groupSize > 1, fallbackUsed)
+    );
   });
   return entries.map((entry) => results.get(entry.side));
+}
+
+function rankedResult(entry, visual, equal, fallbackUsed) {
+  const fallbackReason = fallbackUsed
+    ? 'Для обязательного ранга применены приоритетные показатели этой категории.'
+    : '';
+  return {
+    side: entry.side,
+    status: equal ? 'equal' : 'comparable',
+    cls: visual.cls,
+    label: visual.label,
+    summary: entry.evaluation.summary,
+    reason: [entry.evaluation.reason, fallbackReason].filter(Boolean).join(' ')
+  };
+}
+
+function compareRankVectors(left, right) {
+  const length = Math.max(left.length, right.length);
+  for (let i = 0; i < length; i += 1) {
+    const leftValue = Number(left[i] ?? 0);
+    const rightValue = Number(right[i] ?? 0);
+    if (leftValue === rightValue) continue;
+    return leftValue > rightValue ? 1 : -1;
+  }
+  return 0;
+}
+
+function fallbackRankVector(entry) {
+  const attr = entry.attr || {};
+  const evaluation = entry.evaluation || {};
+  const metrics = evaluation.metrics || {};
+  const metric = (key, defaultValue = 0) => {
+    const value = Number(metrics[key]);
+    return Number.isFinite(value) ? value : defaultValue;
+  };
+  const legacy = Number(attr.score);
+  const legacyScore = attr.score !== null && attr.score !== undefined
+    && Number.isFinite(legacy) ? legacy : null;
+
+  if (attr.id === 'entry_conditions') {
+    return [legacyScore ?? -Number.MAX_SAFE_INTEGER];
+  }
+  if (attr.id === 'service_cost') {
+    return [metric('service_rank'), -metric('monthly_cost')];
+  }
+  if (attr.id === 'transfers_payments' || attr.id === 'cash_withdrawal') {
+    if (metrics.unlimited) return [1, 0, 0];
+    const periodRank = { year: 1, billing: 2, month: 3, operation: 3, day: 4 };
+    const limits = metrics.limits || [];
+    const strongest = limits.reduce((best, item) => {
+      if (!best || item.amount > best.amount) return item;
+      if (item.amount === best.amount
+          && (periodRank[item.period] || 0) > (periodRank[best.period] || 0)) return item;
+      return best;
+    }, null);
+    return strongest
+      ? [0, Number(strongest.amount) || 0, periodRank[strongest.period] || 0]
+      : [0, legacyScore ?? 0, 0];
+  }
+  if (attr.id === 'lounge_access') {
+    return [metric('unlimited'), metric('visits_monthly'), metric('availability'), metric('guests')];
+  }
+  if (attr.id === 'cashback') {
+    return [metric('base_rate', metric('max_rate', legacyScore ?? 0)), metric('max_rate'),
+      metric('monthly_cap'), metric('categories')];
+  }
+  if (attr.id === 'deposits') {
+    return [metric('rate', legacyScore ?? 0), -metric('minimum_amount'), metric('maximum_amount')];
+  }
+  if (attr.id === 'taxi' || attr.id === 'restaurants') {
+    return [metric('monthly_total', legacyScore ?? 0), metric('monthly_count'),
+      metric('per_use_limit'), metric('availability')];
+  }
+  if (attr.id === 'insurance') {
+    return [metric('coverage', legacyScore ?? 0), metric('trip_days'), metric('availability')];
+  }
+  if (attr.id === 'concierge' || attr.id === 'supreme') {
+    return [metric('service_rank', legacyScore ?? 0), metric('round_the_clock'),
+      metric('additional_cards')];
+  }
+  if (attr.id === 'other_benefits') {
+    const items = Array.isArray(attr.value) ? attr.value : [];
+    const always = items.filter((item) => item.availability === 'always_included').length;
+    const selectable = items.filter((item) => item.availability === 'selectable').length;
+    const confirmed = items.filter((item) => item.availability !== 'rule').length;
+    return [always, selectable, confirmed];
+  }
+  return [legacyScore ?? 0];
+}
+
+function isMissingRankEntry(entry) {
+  if (entry.evaluation.status === 'missing') return true;
+  const value = entry.attr ? entry.attr.value : '';
+  if (Array.isArray(value)) return value.length === 0;
+  const text = String(value || '').trim().toLowerCase();
+  return !text || text.includes('не найдено') || text.includes('не нашли')
+    || text === 'нет данных';
 }
 
 function compareEvaluations(left, right) {
