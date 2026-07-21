@@ -40,30 +40,25 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .stats b { display: block; font-size: 24px; color: var(--green);
   font-family: ui-monospace, "SF Mono", Menlo, monospace; }
 .stats span { color: var(--muted); font-size: 13px; }
-.primary-picker, .selection-section { margin-top: 22px; padding: 16px;
-  border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
+.pickers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
+  margin-top: 22px; }
+.picker { background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; min-width: 0; padding: 14px 16px;
   box-shadow: var(--shadow); }
-.step-head { margin-bottom: 14px; }
-.step-head h2, .selection-head h2 { margin: 0; font-size: 22px; }
-.step-head p:last-child { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
-.step-kicker { margin: 0 0 2px; color: var(--green); font-size: 11px;
-  font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.picker h2 { margin: 0 0 10px; font-size: 16px; }
+.picker h3 { margin: 12px 0 8px; font-size: 12px; color: var(--muted);
+  text-transform: uppercase; }
 .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink);
   border-radius: 999px; min-height: 44px; padding: 10px 14px; font-size: 14px;
   line-height: 1.2; cursor: pointer; font-family: inherit; }
+.level-chip { display: inline-flex; flex-direction: column; align-items: flex-start;
+  gap: 2px; text-align: left; border-radius: 12px; }
+.chip-main { font-weight: 700; }
+.chip-meta { color: var(--muted); font-size: 12px; }
 .chip:hover { border-color: var(--green); color: var(--green); }
 .chip.active { background: var(--green); border-color: var(--green); color: #fff; }
-.level-select-wrap { max-width: 720px; margin-top: 14px; }
-.level-select-wrap label, .manual-editor label { display: block; margin: 0 0 5px;
-  color: var(--muted); font-size: 12px; font-weight: 750; text-transform: uppercase; }
-.level-select, .manual-editor select { width: 100%; min-height: 46px; padding: 10px 38px 10px 12px;
-  border: 1px solid var(--line-strong); border-radius: 8px; background: #fff;
-  color: var(--ink); font: inherit; }
-.level-select:focus, .manual-editor select:focus { border-color: var(--green);
-  box-shadow: 0 0 0 2px rgba(24, 143, 79, 0.12); outline: 0; }
-.level-select:disabled, .manual-editor select:disabled { color: var(--muted);
-  background: #f7f9f5; }
+.chip.active .chip-meta { color: rgba(255, 255, 255, 0.84); }
 .recommendations { margin-top: 16px; padding: 16px; border: 1px solid var(--line);
   border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); }
 .recommendations-head { display: flex; align-items: end; justify-content: space-between;
@@ -73,8 +68,8 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
 .recommendations h2 { margin: 0; font-size: 20px; }
 .recommendations-summary { max-width: 620px; margin: 0; color: var(--muted);
   font-size: 13px; text-align: right; }
-.recommendation-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px; }
+.recommendation-grid { display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; }
 .recommendation-card { display: flex; min-width: 0; min-height: 116px;
   flex-direction: column; align-items: flex-start; gap: 5px; padding: 12px;
   border: 1px solid var(--line); border-radius: 8px; background: #fff;
@@ -93,27 +88,6 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   color: #795f1e; }
 .recommendation-empty { grid-column: 1 / -1; margin: 0; padding: 12px;
   border-radius: 8px; background: #f7f9f5; color: var(--muted); font-size: 13px; }
-.recommendations-toggle, .slot-action { min-height: 40px; margin-top: 10px;
-  border: 1px solid var(--green); border-radius: 8px; background: #fff;
-  color: var(--green); cursor: pointer; padding: 8px 12px; font: inherit;
-  font-size: 13px; font-weight: 750; }
-.recommendations-toggle:hover, .recommendations-toggle:focus-visible,
-.slot-action:hover, .slot-action:focus-visible { background: var(--green-soft); outline: 0; }
-.selection-head { margin-bottom: 12px; }
-.selection-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px; }
-.selection-slot { min-width: 0; padding: 13px; border: 1px solid var(--line);
-  border-radius: 8px; background: #fff; }
-.selection-slot.complete { border-color: rgba(24, 143, 79, .42);
-  background: #fbfefc; }
-.slot-label { margin: 0 0 6px; color: var(--muted); font-size: 11px;
-  font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
-.slot-empty { margin: 0; color: var(--muted); font-size: 13px; }
-.slot-bank { margin: 0; color: var(--green); font-size: 12px; font-weight: 800; }
-.slot-tier { margin: 2px 0 0; font-size: 14px; font-weight: 750; line-height: 1.35; }
-.slot-threshold { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
-.manual-editor { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
-.manual-editor label:not(:first-child) { margin-top: 10px; }
 .hint { margin: 18px 0 0; color: var(--muted); }
 .js-warning { margin: 14px 0 0; padding: 12px 14px; border: 1px solid var(--line);
   border-radius: 8px; background: #fff8e8; color: #6f5a25; font-size: 14px; }
@@ -216,15 +190,16 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   .page { padding: 24px 14px 42px; }
   h1 { font-size: 32px; }
   .stats div { flex: 1 1 138px; min-width: 0; }
-  .cmp-head { grid-template-columns: 1fr; }
+  .pickers, .cmp-head { grid-template-columns: 1fr; }
   .cmp-attr-spacer { display: none; }
-  .primary-picker, .recommendations, .selection-section { padding: 14px; }
+  .picker, .recommendations { padding: 14px; }
   .recommendations-head { display: block; }
   .recommendations-summary { margin-top: 6px; text-align: left; }
-  .recommendation-grid, .selection-slots { grid-template-columns: 1fr; }
+  .recommendation-grid { grid-template-columns: 1fr; }
   .recommendation-card { min-height: 0; }
   .chip-row { gap: 8px; }
   .chip { flex: 1 1 auto; justify-content: center; min-width: min(46%, 220px); }
+  .level-chip { align-items: center; min-width: min(100%, 220px); text-align: center; }
   .cmp-scroll { max-height: none; overflow: visible; border: 0; border-radius: 0; }
   .cmp-table, .cmp-table colgroup, .cmp-table tbody, .cmp-table tr,
   .cmp-table td { display: block; width: 100%; }
@@ -254,7 +229,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   }
   body { background: #fff; color: #111; font-size: 10px; line-height: 1.35; }
   .page { max-width: none; margin: 0; padding: 0; }
-  .hero, .primary-picker, .recommendations, .selection-section, #hint,
+  .hero, .pickers, .recommendations, #hint,
   #js-warning, .footer,
   .compare-actions .pdf-button {
     display: none !important;
@@ -1065,18 +1040,24 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
       </section>
     </section>
 
-    <section id="primary-picker" class="primary-picker">
-      <div class="step-head">
-        <p class="step-kicker">Шаг 1</p>
-        <h2>Выберите основной банк</h2>
-        <p>Его уровень станет ориентиром для подбора сопоставимых предложений.</p>
+    <section class="pickers">
+      <div class="picker" data-side="a">
+        <h2>Банк 1</h2>
+        <div class="chip-row banks"><button type="button" class="chip" data-bank-index="0">Сбер</button><button type="button" class="chip" data-bank-index="1">Альфа-Банк</button><button type="button" class="chip" data-bank-index="2">ВТБ</button><button type="button" class="chip" data-bank-index="3">Газпромбанк</button><button type="button" class="chip" data-bank-index="4">Озон Банк</button><button type="button" class="chip" data-bank-index="5">Райффайзен Банк</button><button type="button" class="chip" data-bank-index="6">Т-Банк</button></div>
+        <h3 class="lvl-title" hidden>Уровень пакета</h3>
+        <div class="chip-row levels"></div>
       </div>
-      <div class="chip-row banks"><button type="button" class="chip" data-bank-index="0">Сбер</button><button type="button" class="chip" data-bank-index="1">Альфа-Банк</button><button type="button" class="chip" data-bank-index="2">ВТБ</button><button type="button" class="chip" data-bank-index="3">Газпромбанк</button><button type="button" class="chip" data-bank-index="4">Озон Банк</button><button type="button" class="chip" data-bank-index="5">Райффайзен Банк</button><button type="button" class="chip" data-bank-index="6">Т-Банк</button></div>
-      <div id="primary-level-wrap" class="level-select-wrap" hidden>
-        <label for="primary-level-select">Уровень пакета</label>
-        <select id="primary-level-select" class="level-select">
-          <option value="">Выберите уровень пакета</option>
-        </select>
+      <div class="picker" data-side="b">
+        <h2>Банк 2</h2>
+        <div class="chip-row banks"><button type="button" class="chip" data-bank-index="0">Сбер</button><button type="button" class="chip" data-bank-index="1">Альфа-Банк</button><button type="button" class="chip" data-bank-index="2">ВТБ</button><button type="button" class="chip" data-bank-index="3">Газпромбанк</button><button type="button" class="chip" data-bank-index="4">Озон Банк</button><button type="button" class="chip" data-bank-index="5">Райффайзен Банк</button><button type="button" class="chip" data-bank-index="6">Т-Банк</button></div>
+        <h3 class="lvl-title" hidden>Уровень пакета</h3>
+        <div class="chip-row levels"></div>
+      </div>
+      <div class="picker" data-side="c">
+        <h2>Банк 3</h2>
+        <div class="chip-row banks"><button type="button" class="chip" data-bank-index="0">Сбер</button><button type="button" class="chip" data-bank-index="1">Альфа-Банк</button><button type="button" class="chip" data-bank-index="2">ВТБ</button><button type="button" class="chip" data-bank-index="3">Газпромбанк</button><button type="button" class="chip" data-bank-index="4">Озон Банк</button><button type="button" class="chip" data-bank-index="5">Райффайзен Банк</button><button type="button" class="chip" data-bank-index="6">Т-Банк</button></div>
+        <h3 class="lvl-title" hidden>Уровень пакета</h3>
+        <div class="chip-row levels"></div>
       </div>
     </section>
     <section id="recommendations" class="recommendations" hidden aria-live="polite">
@@ -1088,51 +1069,6 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <p id="recommendations-summary" class="recommendations-summary"></p>
       </div>
       <div id="recommendations-list" class="recommendation-grid"></div>
-      <button type="button" id="recommendations-toggle"
-        class="recommendations-toggle" hidden>Показать ещё</button>
-    </section>
-    <section class="selection-section" aria-labelledby="selection-title">
-      <div class="selection-head">
-        <p class="step-kicker">Шаг 2</p>
-        <h2 id="selection-title">Выбрано для сравнения</h2>
-      </div>
-      <div class="selection-slots">
-        <article class="selection-slot" data-slot="a">
-          <p class="slot-label">Банк 1</p>
-          <div class="slot-summary" data-slot-summary="a"></div>
-          <button type="button" class="slot-action" data-edit-primary>
-            Изменить
-          </button>
-        </article>
-        <article class="selection-slot" data-slot="b">
-          <p class="slot-label">Банк 2</p>
-          <div class="slot-summary" data-slot-summary="b"></div>
-          <button type="button" class="slot-action" data-manual-toggle="b">
-            Выбрать вручную
-          </button>
-          <div class="manual-editor" data-manual-editor="b" hidden>
-            <label for="manual-bank-b">Банк</label>
-            <select id="manual-bank-b" class="manual-bank-select" data-side="b"></select>
-            <label for="manual-level-b">Уровень пакета</label>
-            <select id="manual-level-b" class="manual-level-select" data-side="b"
-              disabled></select>
-          </div>
-        </article>
-        <article class="selection-slot" data-slot="c">
-          <p class="slot-label">Банк 3</p>
-          <div class="slot-summary" data-slot-summary="c"></div>
-          <button type="button" class="slot-action" data-manual-toggle="c">
-            Выбрать вручную
-          </button>
-          <div class="manual-editor" data-manual-editor="c" hidden>
-            <label for="manual-bank-c">Банк</label>
-            <select id="manual-bank-c" class="manual-bank-select" data-side="c"></select>
-            <label for="manual-level-c">Уровень пакета</label>
-            <select id="manual-level-c" class="manual-level-select" data-side="c"
-              disabled></select>
-          </div>
-        </article>
-      </div>
     </section>
     <p id="js-warning" class="js-warning">Если банки не выбираются, файл открыт
     во встроенном просмотрщике без JavaScript. Нажмите «Поделиться» → «Открыть
@@ -1269,8 +1205,6 @@ const HTML2CANVAS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.
 const JSPDF_URL = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
 let pdfLibraryPromise = null;
 const state = Object.fromEntries(SIDES.map((side) => [side, { bank: null, level: null }]));
-let recommendationsExpanded = false;
-let activeManualSide = null;
 document.documentElement.classList.add('js-ready');
 
 function el(tag, cls, text) {
@@ -1280,162 +1214,45 @@ function el(tag, cls, text) {
   return node;
 }
 
-function levelOptionLabel(level) {
-  const threshold = validEntryMatch(level)
-    ? level.entry_match.label
-    : level.entry_hint;
-  return threshold ? `${level.tier} · ${threshold}` : level.tier;
-}
-
-function populateLevelSelect(select, bankIndex, levelIndex, placeholder) {
-  select.innerHTML = '';
-  const empty = el('option', '', placeholder);
-  empty.value = '';
-  select.appendChild(empty);
-  if (bankIndex === null) {
-    select.disabled = true;
-    select.value = '';
-    return;
-  }
-  DATA[bankIndex].levels.forEach((level, index) => {
-    const option = el('option', '', levelOptionLabel(level));
-    option.value = String(index);
-    select.appendChild(option);
-  });
-  select.disabled = false;
-  select.value = levelIndex === null ? '' : String(levelIndex);
-}
-
-function renderPrimaryBanks() {
-  const row = document.querySelector('#primary-picker .banks');
+function renderBanks(side) {
+  const picker = document.querySelector(`.picker[data-side="${side}"]`);
+  const row = picker.querySelector('.banks');
   row.querySelectorAll('.chip').forEach((chip) => {
     const i = Number(chip.dataset.bankIndex);
-    if (state.a.bank === i) chip.classList.add('active');
+    if (state[side].bank === i) chip.classList.add('active');
     else chip.classList.remove('active');
-    chip.setAttribute('aria-pressed', state.a.bank === i ? 'true' : 'false');
     chip.onclick = () => {
-      state.a.bank = i;
-      state.a.level = null;
-      recommendationsExpanded = false;
-      activeManualSide = null;
-      renderPrimaryControls();
+      state[side].bank = i;
+      state[side].level = null;
+      renderBanks(side);
+      renderLevels(side);
       renderRecommendations();
-      renderSelectionSlots();
       renderCompare();
     };
   });
 }
 
-function renderPrimaryLevelSelect() {
-  const wrap = document.getElementById('primary-level-wrap');
-  const select = document.getElementById('primary-level-select');
-  wrap.hidden = state.a.bank === null;
-  populateLevelSelect(
-    select, state.a.bank, state.a.level, 'Выберите уровень пакета'
-  );
-  select.onchange = () => {
-    state.a.level = select.value === '' ? null : Number(select.value);
-    recommendationsExpanded = false;
-    renderRecommendations();
-    renderSelectionSlots();
-    renderCompare();
-  };
-}
-
-function renderPrimaryControls() {
-  renderPrimaryBanks();
-  renderPrimaryLevelSelect();
-}
-
-function populateManualBankSelect(select, side) {
-  select.innerHTML = '';
-  const empty = el('option', '', 'Выберите банк');
-  empty.value = '';
-  select.appendChild(empty);
-  const selectedElsewhere = new Set(SIDES
-    .filter((candidateSide) => candidateSide !== side)
-    .map((candidateSide) => state[candidateSide].bank)
-    .filter((bankIndex) => bankIndex !== null));
-  DATA.forEach((bank, bankIndex) => {
-    const option = el('option', '', bank.bank);
-    option.value = String(bankIndex);
-    option.disabled = selectedElsewhere.has(bankIndex);
-    select.appendChild(option);
-  });
-  select.value = state[side].bank === null ? '' : String(state[side].bank);
-}
-
-function renderManualEditor(side) {
-  const editor = document.querySelector(`[data-manual-editor="${side}"]`);
-  editor.hidden = activeManualSide !== side;
-  if (editor.hidden) return;
-  const bankSelect = editor.querySelector('.manual-bank-select');
-  const levelSelect = editor.querySelector('.manual-level-select');
-  populateManualBankSelect(bankSelect, side);
-  populateLevelSelect(
-    levelSelect, state[side].bank, state[side].level, 'Выберите уровень пакета'
-  );
-  bankSelect.onchange = () => {
-    state[side].bank = bankSelect.value === '' ? null : Number(bankSelect.value);
-    state[side].level = null;
-    renderRecommendations();
-    renderSelectionSlots();
-    renderCompare();
-  };
-  levelSelect.onchange = () => {
-    state[side].level = levelSelect.value === '' ? null : Number(levelSelect.value);
-    renderRecommendations();
-    renderSelectionSlots();
-    renderCompare(true);
-  };
-}
-
-function renderSlotSummary(side) {
-  const node = document.querySelector(`[data-slot-summary="${side}"]`);
-  const slot = document.querySelector(`[data-slot="${side}"]`);
-  const item = selected(side);
-  node.innerHTML = '';
-  slot.classList.toggle('complete', Boolean(item));
-  if (!item) {
-    const bankName = state[side].bank === null ? '' : DATA[state[side].bank].bank;
-    node.appendChild(el('p', 'slot-empty', bankName
-      ? `${bankName}: выберите уровень пакета`
-      : side === 'a' ? 'Сначала выберите основной банк и уровень.'
-      : 'Выберите рекомендацию или заполните вручную.'));
-    return;
-  }
-  node.appendChild(el('p', 'slot-bank', item.bank));
-  node.appendChild(el('p', 'slot-tier', item.tier));
-  const threshold = validEntryMatch(item) ? item.entry_match.label : item.entry_hint;
-  if (threshold) node.appendChild(el('p', 'slot-threshold', `Вход: ${threshold}`));
-}
-
-function focusPrimaryPicker() {
-  const picker = document.getElementById('primary-picker');
-  picker.scrollIntoView({ behavior: 'auto', block: 'start' });
-  const target = state.a.bank === null
-    ? picker.querySelector('.banks .chip')
-    : document.getElementById('primary-level-select');
-  if (target) target.focus();
-}
-
-function renderSelectionSlots() {
-  SIDES.forEach(renderSlotSummary);
-  const primaryAction = document.querySelector('[data-edit-primary]');
-  primaryAction.textContent = selected('a') ? 'Изменить' : 'Выбрать';
-  primaryAction.onclick = focusPrimaryPicker;
-  ['b', 'c'].forEach((side) => {
-    const button = document.querySelector(`[data-manual-toggle="${side}"]`);
-    const isOpen = activeManualSide === side;
-    button.textContent = isOpen
-      ? 'Закрыть ручной выбор'
-      : selected(side) ? 'Изменить' : 'Выбрать вручную';
-    button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    button.onclick = () => {
-      activeManualSide = isOpen ? null : side;
-      renderSelectionSlots();
+function renderLevels(side) {
+  const picker = document.querySelector(`.picker[data-side="${side}"]`);
+  const title = picker.querySelector('.lvl-title');
+  const row = picker.querySelector('.levels');
+  row.innerHTML = '';
+  const bankIdx = state[side].bank;
+  title.hidden = bankIdx === null;
+  if (bankIdx === null) return;
+  DATA[bankIdx].levels.forEach((lvl, i) => {
+    const chip = el('button', 'chip level-chip');
+    chip.type = 'button';
+    chip.appendChild(el('span', 'chip-main', lvl.tier));
+    if (lvl.entry_hint) chip.appendChild(el('span', 'chip-meta', `(${lvl.entry_hint})`));
+    if (state[side].level === i) chip.classList.add('active');
+    chip.onclick = () => {
+      state[side].level = i;
+      renderLevels(side);
+      renderRecommendations();
+      renderCompare();
     };
-    renderManualEditor(side);
+    row.appendChild(chip);
   });
 }
 
@@ -1535,19 +1352,17 @@ function applyRecommendation(recommendation) {
   if (!side) return;
   state[side].bank = recommendation.bankIndex;
   state[side].level = recommendation.levelIndex;
-  activeManualSide = null;
+  renderBanks(side);
+  renderLevels(side);
   renderRecommendations();
-  renderSelectionSlots();
-  renderCompare(true);
+  renderCompare();
 }
 
 function renderRecommendations() {
   const section = document.getElementById('recommendations');
   const summary = document.getElementById('recommendations-summary');
   const list = document.getElementById('recommendations-list');
-  const toggle = document.getElementById('recommendations-toggle');
   const referenceState = state.a;
-  toggle.hidden = true;
   if (referenceState.bank === null || referenceState.level === null) {
     section.hidden = true;
     list.innerHTML = '';
@@ -1579,9 +1394,7 @@ function renderRecommendations() {
     .map((side) => state[side].bank)
     .filter((bankIndex) => bankIndex !== null));
   const slotsFull = nextRecommendationSide() === null;
-  const visibleRecommendations = recommendationsExpanded
-    ? recommendations : recommendations.slice(0, 3);
-  visibleRecommendations.forEach((recommendation) => {
+  recommendations.forEach((recommendation) => {
     const alreadySelected = selectedBanks.has(recommendation.bankIndex);
     const card = el('button', `recommendation-card ${recommendation.kind.id}`);
     card.type = 'button';
@@ -1597,17 +1410,6 @@ function renderRecommendations() {
     card.onclick = () => applyRecommendation(recommendation);
     list.appendChild(card);
   });
-  if (recommendations.length > 3) {
-    toggle.hidden = false;
-    toggle.textContent = recommendationsExpanded
-      ? 'Скрыть дополнительные варианты'
-      : `Показать ещё ${recommendations.length - 3}`;
-    toggle.setAttribute('aria-expanded', recommendationsExpanded ? 'true' : 'false');
-    toggle.onclick = () => {
-      recommendationsExpanded = !recommendationsExpanded;
-      renderRecommendations();
-    };
-  }
 }
 
 function renderHead(node, item) {
@@ -1616,7 +1418,7 @@ function renderHead(node, item) {
   if (item.entry_hint) node.appendChild(el('p', 'cmp-entry-hint', `Вход: ${item.entry_hint}`));
 }
 
-function renderCompare(scrollWhenComplete = false) {
+function renderCompare() {
   const selectedItems = SIDES
     .map((side) => ({ side, item: selected(side) }))
     .filter((entry) => entry.item);
@@ -1666,11 +1468,7 @@ function renderCompare(scrollWhenComplete = false) {
     highlightWinners(selectedItems, attrsBySide, cellsBySide);
     tbody.appendChild(tr);
   });
-  if (scrollWhenComplete) {
-    const reducedMotion = window.matchMedia
-      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    cmp.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
-  }
+  cmp.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function loadPdfScript(url, ready) {
@@ -2262,10 +2060,10 @@ function hasMixedBenefitStatuses(items) {
   return statuses.size > 1;
 }
 
-renderPrimaryControls();
+SIDES.forEach((side) => {
+  renderBanks(side);
+});
 renderRecommendations();
-renderSelectionSlots();
-renderCompare();
 document.getElementById('pdf-button').addEventListener('click', exportComparePdf);
 initChangesApp(document.querySelector('.changes-app'));
 initChangesPanel(document.querySelector('.js-changes-panel'));
