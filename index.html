@@ -1156,7 +1156,8 @@ function setChangesPanelStorage(key, value) {
 const DATA = JSON.parse(document.getElementById('data').textContent);
 const SIDES = ['a', 'b', 'c'];
 const ALWAYS_SHOW_FIELDS = new Set(['transfers_payments', 'cash_withdrawal', 'supreme']);
-const PDF_LIB_URL = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+const HTML2CANVAS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+const JSPDF_URL = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
 let pdfLibraryPromise = null;
 const state = Object.fromEntries(SIDES.map((side) => [side, { bank: null, level: null }]));
 document.documentElement.classList.add('js-ready');
@@ -1277,25 +1278,29 @@ function renderCompare() {
   cmp.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function loadPdfScript(url, ready) {
+  if (ready()) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = url;
+    script.async = true;
+    script.onload = () => ready()
+      ? resolve()
+      : reject(new Error(`PDF dependency did not initialize: ${url}`));
+    script.onerror = () => reject(new Error(`PDF dependency failed to load: ${url}`));
+    document.head.appendChild(script);
+  });
+}
+
 function loadPdfLibrary() {
   if (window.html2canvas && window.jspdf && window.jspdf.jsPDF) {
     return Promise.resolve({ html2canvas: window.html2canvas, jsPDF: window.jspdf.jsPDF });
   }
   if (pdfLibraryPromise) return pdfLibraryPromise;
-  pdfLibraryPromise = new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = PDF_LIB_URL;
-    script.async = true;
-    script.onload = () => {
-      if (window.html2canvas && window.jspdf && window.jspdf.jsPDF) {
-        resolve({ html2canvas: window.html2canvas, jsPDF: window.jspdf.jsPDF });
-      } else {
-        reject(new Error('PDF dependencies are unavailable'));
-      }
-    };
-    script.onerror = () => reject(new Error('PDF library load failed'));
-    document.head.appendChild(script);
-  });
+  pdfLibraryPromise = Promise.all([
+    loadPdfScript(HTML2CANVAS_URL, () => Boolean(window.html2canvas)),
+    loadPdfScript(JSPDF_URL, () => Boolean(window.jspdf && window.jspdf.jsPDF))
+  ]).then(() => ({ html2canvas: window.html2canvas, jsPDF: window.jspdf.jsPDF }));
   return pdfLibraryPromise;
 }
 
@@ -1312,16 +1317,15 @@ function comparePdfFileName() {
     .slice(0, 120) + '.pdf';
 }
 
-function pdfPageSizeForElement(element, marginMm) {
+function pdfCaptureSizeForElement(element) {
   const rect = element.getBoundingClientRect();
   const widthPx = Math.ceil(Math.max(element.scrollWidth, element.offsetWidth, rect.width));
   const heightPx = Math.ceil(Math.max(element.scrollHeight, element.offsetHeight, rect.height));
-  const pxToMm = 25.4 / 96;
+  const maxCanvasSide = 16000;
   return {
     widthPx,
     heightPx,
-    widthMm: Math.ceil((widthPx * pxToMm + marginMm * 2) * 10) / 10,
-    heightMm: Math.ceil((heightPx * pxToMm + marginMm * 2) * 10) / 10
+    scale: Math.min(2, maxCanvasSide / widthPx, maxCanvasSide / heightPx)
   };
 }
 
@@ -1353,19 +1357,19 @@ async function exportComparePdf() {
       () => requestAnimationFrame(resolve)
     ));
     const marginMm = 8;
-    const pageSize = pdfPageSizeForElement(cmp, marginMm);
+    const captureSize = pdfCaptureSizeForElement(cmp);
     const canvas = await html2canvas(cmp, {
-      scale: 2,
+      scale: captureSize.scale,
       useCORS: true,
       backgroundColor: '#ffffff',
-      width: pageSize.widthPx,
-      height: pageSize.heightPx,
-      windowWidth: Math.max(document.documentElement.clientWidth, pageSize.widthPx)
+      width: captureSize.widthPx,
+      height: captureSize.heightPx,
+      windowWidth: Math.max(document.documentElement.clientWidth, captureSize.widthPx)
     });
     const pdf = new jsPDF({
       unit: 'mm',
-      format: [pageSize.widthMm, pageSize.heightMm],
-      orientation: pageSize.widthMm >= pageSize.heightMm ? 'landscape' : 'portrait',
+      format: 'a3',
+      orientation: 'landscape',
       compress: true
     });
     const sheetWidth = pdf.internal.pageSize.getWidth();
@@ -1379,14 +1383,17 @@ async function exportComparePdf() {
     const imageWidth = canvas.width * fit;
     const imageHeight = canvas.height * fit;
     const imageX = (sheetWidth - imageWidth) / 2;
-    const imageY = (sheetHeight - imageHeight) / 2;
+    const imageY = marginMm;
     pdf.addImage(
       canvas.toDataURL('image/jpeg', 0.98),
       'JPEG', imageX, imageY, imageWidth, imageHeight, undefined, 'FAST'
     );
     pdf.save(comparePdfFileName());
-  } catch (_error) {
-    window.alert('Не удалось подготовить PDF. Проверьте подключение к интернету и повторите выгрузку.');
+  } catch (error) {
+    console.error('PDF export failed', error);
+    const detail = error && error.message ? `
+${error.message}` : '';
+    window.alert(`Не удалось подготовить PDF. Повторите выгрузку.${detail}`);
   } finally {
     restore();
   }
