@@ -1304,6 +1304,19 @@ function comparePdfFileName() {
     .slice(0, 120) + '.pdf';
 }
 
+function pdfPageSizeForElement(element, marginMm) {
+  const rect = element.getBoundingClientRect();
+  const widthPx = Math.ceil(Math.max(element.scrollWidth, element.offsetWidth, rect.width));
+  const heightPx = Math.ceil(Math.max(element.scrollHeight, element.offsetHeight, rect.height));
+  const pxToMm = 25.4 / 96;
+  return {
+    widthPx,
+    heightPx,
+    widthMm: Math.ceil((widthPx * pxToMm + marginMm * 2) * 10) / 10,
+    heightMm: Math.ceil((heightPx * pxToMm + marginMm * 2) * 10) / 10
+  };
+}
+
 async function exportComparePdf() {
   const cmp = document.getElementById('compare');
   if (!cmp || cmp.hidden) return;
@@ -1327,14 +1340,30 @@ async function exportComparePdf() {
   document.body.classList.add('pdf-exporting');
   try {
     const html2pdf = await loadPdfLibrary();
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    await new Promise((resolve) => requestAnimationFrame(
+      () => requestAnimationFrame(resolve)
+    ));
+    const marginMm = 8;
+    const pageSize = pdfPageSizeForElement(cmp, marginMm);
     await html2pdf()
       .set({
-        margin: [8, 8, 8, 8],
+        margin: [marginMm, marginMm, marginMm, marginMm],
         filename: comparePdfFileName(),
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' },
-        pagebreak: { mode: ['css', 'legacy'], avoid: ['tr', '.cmp-col', '.benefits-list li'] }
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#ffffff',
+          width: pageSize.widthPx,
+          height: pageSize.heightPx,
+          windowWidth: Math.max(document.documentElement.clientWidth, pageSize.widthPx)
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: [pageSize.widthMm, pageSize.heightMm],
+          orientation: pageSize.widthMm >= pageSize.heightMm ? 'landscape' : 'portrait'
+        }
       })
       .from(cmp)
       .save();
