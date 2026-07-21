@@ -1278,13 +1278,21 @@ function renderCompare() {
 }
 
 function loadPdfLibrary() {
-  if (window.html2pdf) return Promise.resolve(window.html2pdf);
+  if (window.html2canvas && window.jspdf && window.jspdf.jsPDF) {
+    return Promise.resolve({ html2canvas: window.html2canvas, jsPDF: window.jspdf.jsPDF });
+  }
   if (pdfLibraryPromise) return pdfLibraryPromise;
   pdfLibraryPromise = new Promise((resolve, reject) => {
     const script = document.createElement('script');
     script.src = PDF_LIB_URL;
     script.async = true;
-    script.onload = () => resolve(window.html2pdf);
+    script.onload = () => {
+      if (window.html2canvas && window.jspdf && window.jspdf.jsPDF) {
+        resolve({ html2canvas: window.html2canvas, jsPDF: window.jspdf.jsPDF });
+      } else {
+        reject(new Error('PDF dependencies are unavailable'));
+      }
+    };
     script.onerror = () => reject(new Error('PDF library load failed'));
     document.head.appendChild(script);
   });
@@ -1339,34 +1347,44 @@ async function exportComparePdf() {
   button.textContent = 'Готовлю PDF...';
   document.body.classList.add('pdf-exporting');
   try {
-    const html2pdf = await loadPdfLibrary();
+    const { html2canvas, jsPDF } = await loadPdfLibrary();
     if (document.fonts && document.fonts.ready) await document.fonts.ready;
     await new Promise((resolve) => requestAnimationFrame(
       () => requestAnimationFrame(resolve)
     ));
     const marginMm = 8;
     const pageSize = pdfPageSizeForElement(cmp, marginMm);
-    await html2pdf()
-      .set({
-        margin: [marginMm, marginMm, marginMm, marginMm],
-        filename: comparePdfFileName(),
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: '#ffffff',
-          width: pageSize.widthPx,
-          height: pageSize.heightPx,
-          windowWidth: Math.max(document.documentElement.clientWidth, pageSize.widthPx)
-        },
-        jsPDF: {
-          unit: 'mm',
-          format: [pageSize.widthMm, pageSize.heightMm],
-          orientation: pageSize.widthMm >= pageSize.heightMm ? 'landscape' : 'portrait'
-        }
-      })
-      .from(cmp)
-      .save();
+    const canvas = await html2canvas(cmp, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      width: pageSize.widthPx,
+      height: pageSize.heightPx,
+      windowWidth: Math.max(document.documentElement.clientWidth, pageSize.widthPx)
+    });
+    const pdf = new jsPDF({
+      unit: 'mm',
+      format: [pageSize.widthMm, pageSize.heightMm],
+      orientation: pageSize.widthMm >= pageSize.heightMm ? 'landscape' : 'portrait',
+      compress: true
+    });
+    const sheetWidth = pdf.internal.pageSize.getWidth();
+    const sheetHeight = pdf.internal.pageSize.getHeight();
+    const availableWidth = sheetWidth - marginMm * 2;
+    const availableHeight = sheetHeight - marginMm * 2;
+    const fit = Math.min(
+      availableWidth / canvas.width,
+      availableHeight / canvas.height
+    );
+    const imageWidth = canvas.width * fit;
+    const imageHeight = canvas.height * fit;
+    const imageX = (sheetWidth - imageWidth) / 2;
+    const imageY = (sheetHeight - imageHeight) / 2;
+    pdf.addImage(
+      canvas.toDataURL('image/jpeg', 0.98),
+      'JPEG', imageX, imageY, imageWidth, imageHeight, undefined, 'FAST'
+    );
+    pdf.save(comparePdfFileName());
   } catch (_error) {
     window.alert('Не удалось подготовить PDF. Проверьте подключение к интернету и повторите выгрузку.');
   } finally {
