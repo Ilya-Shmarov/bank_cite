@@ -375,6 +375,12 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
   padding: 12px 0 12px 14px;
 }
 .change-head { display: flex; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+.change-source-kind {
+  border-radius: 999px;
+  background: #eef8f2;
+  color: #0b6b3f;
+  padding: 1px 7px;
+}
 .change p { margin: 6px 0 10px; }
 .changes-app a { color: var(--accent); font-weight: 700; }
 .empty { color: var(--muted); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
@@ -467,10 +473,10 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
       <section class="changes-panel js-changes-panel" data-storage-key="sber_vs_changes_collapsed">
         <div class="changes-panel-summary">
           <button type="button" class="changes-panel-toggle js-changes-show"
-              data-open-label="Последние изменения · 52 событий · Скрыть"
-              data-closed-label="Последние изменения · 52 событий · Показать"
+              data-open-label="Последние изменения · 54 событий · Скрыть"
+              data-closed-label="Последние изменения · 54 событий · Показать"
               aria-expanded="false">
-            Последние изменения · 52 событий · Показать
+            Последние изменения · 54 событий · Показать
           </button>
         </div>
         <div class="changes-panel-body js-changes-panel-body" hidden>
@@ -481,7 +487,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
       <h1>Последние изменения</h1>
       <div class="changes-stats">
         <span><b>7</b> банков</span>
-        <span><b>52</b> публикаций</span>
+        <span><b>54</b> публикаций</span>
       </div>
     </header>
     <section class="changes-filters" aria-label="Фильтры">
@@ -517,6 +523,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-04-01">
             <div class="change-head">
               <span>апр 2026</span>
+
             </div>
             <p>В Сбере привилегия «Спорт и красота» перешла на рубли: вместо 75 баллов на 3 уровне начисляется 6000 бонусных рублей Фитмост, а вместо 100 баллов на 4, 5 и 6 уровнях — 8000 бонусных рублей Фитмост.</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -527,6 +534,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-04-01">
             <div class="change-head">
               <span>апр 2026</span>
+
             </div>
             <p>Сбер обновил премиальную линейку: появились новые опции «Питомцы» и «Авто», а на 4 уровне «Такси» выделились в отдельную опцию на выбор.</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -537,6 +545,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-03-01">
             <div class="change-head">
               <span>март 2026</span>
+
             </div>
             <p>Сбер обновил премиальную линейку: во всех уровнях появилась опция «Самокат», такси официально стали без привязки к аэропортам и перелётам, ресторанные компенсации распространились на поезда, а пакет «Путешествия» разделился на два — «Бизнес-залы» и «Такси и рестораны».</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -547,6 +556,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-01-01">
             <div class="change-head">
               <span>янв 2026</span>
+
             </div>
             <p>Сбер увеличил требования по необходимым остаткам совместного доступа для СберПервого до 20 млн ₽ (сейчас 15 млн ₽).</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -557,6 +567,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-01-01">
             <div class="change-head">
               <span>янв 2026</span>
+
             </div>
             <p>Сбер увеличил требования по необходимым остаткам для СберПервого до 15 млн ₽ (было 10 млн ₽), а также по количеству необходимых акций Сбера для выполнение через Клуб акционеров до 40 тыс шт (было 28 тыс шт). Привилегии по новым правилам будут начислены 07 февраля.</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -567,6 +578,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-12-01">
             <div class="change-head">
               <span>дек 2025</span>
+
             </div>
             <p>Сбер распространил привилегии на выбор, доступные ранее только для клиентов СЗФО, на все регионы. Пакеты привилегий на выбор – это либо «Путешествия», либо «Здоровье», либо «Спорт и красота» (баллы Фитмост), либо «Развлечения» (компенсация Афиша ру). При этом для СберПервого от 10М «Путешествия» выбраны всегда, а для остатков 30М также всегда выбран пакет «Здоровье».</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -577,6 +589,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-11-01">
             <div class="change-head">
               <span>ноя 2025</span>
+
             </div>
             <p>Сбер распространил привилегии на выбор, доступные ранее только для клиентов СЗФО, на клиентов Сибирского территориального банка, Дальневосточного территориального банка и Уральского территориального банка.</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -587,6 +600,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-08-01">
             <div class="change-head">
               <span>авг 2025</span>
+
             </div>
             <p>В Сбере появилась опция для совместного учёта остатков – «Привилегии вместе».</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -597,6 +611,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-07-01">
             <div class="change-head">
               <span>июль 2025</span>
+
             </div>
             <p>В Сбере появился «Клуб акционеров» – возможность получить СберПремьер и СберПервый за владение акциями банка.</p>
             <a href="https://www.sberbank.ru/common/img/uploaded/files/pdf/tarif_premobsl_06032026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -613,6 +628,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-03-01">
             <div class="change-head">
               <span>март 2026</span>
+
             </div>
             <p>Альфа-Банк увеличил размер компенсации за поездки на такси в А-Клубе до 5 тыс ₽ (было 2,5 тыс ₽).</p>
             <a href="https://alfabank.servicecdn.ru/site-upload/c1/65/275/Tariffs_Alfa_Only_Card.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -623,6 +639,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-03-01">
             <div class="change-head">
               <span>март 2025</span>
+
             </div>
             <p>В Альфа-Банке теперь не получить второй уровень за 3 млн и 200 тыс трат. Также компенсация оплаты ресторанов и БЗ ограничена: не более 20 тыс ₽ в месяц по каждому сервису.</p>
             <a href="https://alfabank.servicecdn.ru/site-upload/c1/65/275/Tariffs_Alfa_Only_Card.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -633,6 +650,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2024-02-01">
             <div class="change-head">
               <span>фев 2024</span>
+
             </div>
             <p>Альфа-Банк сменил название своего премиума: теперь это «Alfa Only», а не «Альфа-Премиум»</p>
             <a href="https://alfabank.servicecdn.ru/site-upload/c1/65/275/Tariffs_Alfa_Only_Card.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -643,6 +661,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2018-01-01">
             <div class="change-head">
               <span>янв 2018</span>
+
             </div>
             <p>Перезапуск премиальной программы Альфа-Банка</p>
             <a href="https://alfabank.servicecdn.ru/site-upload/c1/65/275/Tariffs_Alfa_Only_Card.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -655,10 +674,22 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div class="timeline">
 
           <article class="change js-change-card"
+              data-change-id="146a460e3ec8445382045f13bfce29e4ece5abf41f866358227eb7fd77828827"
+              data-date="2026-07-31">
+            <div class="change-head">
+              <span>июл 2026</span>
+              <span class="change-source-kind">Официальный источник · ВТБ: обновление «Привилегии»</span>
+            </div>
+            <p>Улучшаем ВТБ «Привилегию» с 31 июля. Теперь всегда 5 категорий вместо 3. Преференции, начисленные 20 июля, будут действовать по 19 августа</p>
+            <a href="https://www.vtb.ru/promo/rsvtb-pv-2/" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
               data-change-id="pbi-ВТБ-1"
               data-date="2026-07-01">
             <div class="change-head">
               <span>июль 2026</span>
+
             </div>
             <p>ВТБ повысил требования для бесплатного обслуживания на Привилегии по тратам (до 150 тыс в мес) и по зарплате (до 300 тыс в мес или 700 тыс за 3 месяца).</p>
             <a href="https://www.vtb.ru/media-files/vtb.ru/sitepages/tarify/chastnim-licam/t-priv_pbu.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -669,6 +700,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-06-01">
             <div class="change-head">
               <span>июнь 2026</span>
+
             </div>
             <p>ВТБ добавил на всех уровнях доступ в приложение для организации отдыха appoint, а для уровней от 6 млн ₽ — получение один раз в год бесплатного электронного кода для appoint.</p>
             <a href="https://www.vtb.ru/media-files/vtb.ru/sitepages/tarify/chastnim-licam/t-priv_pbu.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -679,6 +711,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-05-01">
             <div class="change-head">
               <span>май 2026</span>
+
             </div>
             <p>ВТБ добавил ·ON·PASS Premium для уровня от 10 млн ₽ — в рамках лимита посещения бизнес-залов.</p>
             <a href="https://www.vtb.ru/media-files/vtb.ru/sitepages/tarify/chastnim-licam/t-priv_pbu.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -689,6 +722,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-05-01">
             <div class="change-head">
               <span>май 2026</span>
+
             </div>
             <p>ВТБ добавил телемедицину в «Привилегию» от 10 млн ₽ остатков.</p>
             <a href="https://www.vtb.ru/media-files/vtb.ru/sitepages/tarify/chastnim-licam/t-priv_pbu.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -699,6 +733,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-03-01">
             <div class="change-head">
               <span>март 2026</span>
+
             </div>
             <p>В ВТБ в рамках лимита на бизнес-залы стали доступны услуги ускоренных предполётных формальностей ·ON·TRACK и упаковки багажа ·ON·PACK.</p>
             <a href="https://www.vtb.ru/media-files/vtb.ru/sitepages/tarify/chastnim-licam/t-priv_pbu.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -709,6 +744,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-01-01">
             <div class="change-head">
               <span>янв 2026</span>
+
             </div>
             <p>Стоимость платного обслуживания в ВТБ «Привилегия» увеличена до 3990 ₽ (было 2990 ₽).</p>
             <a href="https://www.vtb.ru/media-files/vtb.ru/sitepages/tarify/chastnim-licam/t-priv_pbu.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -719,6 +755,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-10-01">
             <div class="change-head">
               <span>окт 2025</span>
+
             </div>
             <p>В ВТБ масштабные изменения привилегий: в зависимости от уровня (2М, 6М, 10М) теперь предоставляется определенное количество «Преференций» (2, 6, 10), которые можно тратить на компенсации такси (по 1000 ₽), ресторанов (по 2500 ₽) или на проход в бизнес-залы (по Mir Pass). Изменились и привилегии в пакете «Прайм+»: добавилась компенсация ресторанов в аэропортах 20 в мес / 50 в год при остатках 50М (30М для регионов) и 25 в мес / 50 в год при остатках 100М (50М для регионов). Размер компенсации – 2500 ₽.</p>
             <a href="https://www.vtb.ru/media-files/vtb.ru/sitepages/tarify/chastnim-licam/t-priv_pbu.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -729,6 +766,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2024-07-01">
             <div class="change-head">
               <span>июль 2024</span>
+
             </div>
             <p>ВТБ при остатках от 2,5М (2,0М для регионов) теперь дает 1 поездку на такси в месяц до 1 тыс ₽. Ранее компенсировалась 1 поездка в квартал до 2 тыс ₽</p>
             <a href="https://www.vtb.ru/media-files/vtb.ru/sitepages/tarify/chastnim-licam/t-priv_pbu.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -745,6 +783,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-06-01">
             <div class="change-head">
               <span>июнь 2026</span>
+
             </div>
             <p>ГПБ ухудшил условия обслуживания: введены месячные лимиты на трансферы, а Фитмост переведён в бонусные рубли с уменьшением номинала.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -755,6 +794,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-04-01">
             <div class="change-head">
               <span>апр 2026</span>
+
             </div>
             <p>В Газпромбанке в рамках программы «Спорт» добавили ДМС «Забота о здоровье» от ВСК — как альтернативу фитнес-клубам и Фитмосту.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -765,6 +805,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-01-01">
             <div class="change-head">
               <span>янв 2026</span>
+
             </div>
             <p>В Газпромбанке появился Фаст стрек. Услуга доступна через консьерж-сервис в пакете «Комфортное путешествие» в рамках лимита бизнес-залов.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -775,6 +816,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-12-01">
             <div class="change-head">
               <span>дек 2025</span>
+
             </div>
             <p>Газпромбанк убрал бесплатные курьерские доставки в премиальных пакетах.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -785,6 +827,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-10-01">
             <div class="change-head">
               <span>окт 2025</span>
+
             </div>
             <p>Газпромбанк увеличил сумму требуемых остатков на первом уровне. Теперь вместо 2М нужно держать 2,5М. Текущим клиентам сохраняются старые условия до 15 января 2026 г.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -795,6 +838,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-07-01">
             <div class="change-head">
               <span>июль 2025</span>
+
             </div>
             <p>В Газпромбанке изменились условия бесплатного премиального обслуживания на первом уровне: появились покупки от 150 тыс ₽ в мес и увеличилась сумма требуемых покупок для условия 1 млн ₽ + 100 тыс ₽ в мес покупок.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -805,6 +849,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-06-01">
             <div class="change-head">
               <span>июнь 2025</span>
+
             </div>
             <p>В Газпромбанка меняется количество начисляемых баллов Fitmost: теперь 70 / 130 / 220 баллов в зависимости от уровня. Также трансферы теперь можно оформить только через сервис Яндекс Go.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -815,6 +860,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-05-01">
             <div class="change-head">
               <span>май 2025</span>
+
             </div>
             <p>В программе «Комфортное путешествие» от Газпромбанка появилась возможность забрать трансфер в виде промокода для Яндекс Go. При этом механика промокода осталась аналогична трансферу – применить промокод можно только от/до аэропорта или жд вокзала.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -825,6 +871,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-04-01">
             <div class="change-head">
               <span>апр 2025</span>
+
             </div>
             <p>В Газпромбанке изменили количество доступных курьерских доставок: на 1 уровне – 2 шт, на 2 уровне – 8 шт, на 3 уровне – 10 шт. Ранее всем выдавали по 4 в мес.</p>
             <a href="https://www.gazprombank.ru/upload/files/iblock/e97/h038o8uoge7g8zucvs80yz2sy8r9gejz/Tarif-Gazprombank.Premium-s-22.07.2026.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -837,10 +884,22 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
         <div class="timeline">
 
           <article class="change js-change-card"
+              data-change-id="c7341ff56e267fc8b9a329ad26bce4ab92e5fe2dc7c9d3058005c16bae6fab63"
+              data-date="2026-05-25">
+            <div class="change-head">
+              <span>май 2026</span>
+              <span class="change-source-kind">Официальный источник · Новости Ozon Банка</span>
+            </div>
+            <p>Ozon Банк запустил премиальное обслуживание клиентов 25 мая 2026</p>
+            <a href="https://finance.ozon.ru/blog/b2c/news/zapusk-premialnogo-obsluzhivaniya-ultra" target="_blank" rel="noreferrer">Источник</a>
+          </article>
+
+          <article class="change js-change-card"
               data-change-id="pbi-Озон Банк-1"
               data-date="2026-04-01">
             <div class="change-head">
               <span>апр 2026</span>
+
             </div>
             <p>В Озон Банке новые уровни премиального обслуживания: Bronze — 2–3 млн ₽, Silver — 3–6 млн ₽, Gold — 6–12 млн ₽, Platinum — от 12 млн ₽. Также новые привилегии: компенсация питания в аэропортовых ресторанах, компенсация покупок в Ozon Select и медицинская программа.</p>
             <a href="https://cdn1.ozone.ru/s3/ob-landing/static/docs/ecom/products/rules/2026.05.18%20-%20Тариф%20Ultra.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -851,6 +910,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-12-01">
             <div class="change-head">
               <span>дек 2025</span>
+
             </div>
             <p>Ozon банк убрал компенсацию подарков (цветов).</p>
             <a href="https://cdn1.ozone.ru/s3/ob-landing/static/docs/ecom/products/rules/2026.05.18%20-%20Тариф%20Ultra.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -861,6 +921,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-09-01">
             <div class="change-head">
               <span>сент 2025</span>
+
             </div>
             <p>Ozon банк добавил компенсацию подарков (цветов): на 1 уровне (1,4М) – 1 раз в мес (2 в год) по 2500 ₽, на 2 уровне (6М) – 1 раз в мес (4 в год) по 5000 ₽, на 3 уровне (12М) – 1 раз в мес (6 в год) по 5000 ₽.</p>
             <a href="https://cdn1.ozone.ru/s3/ob-landing/static/docs/ecom/products/rules/2026.05.18%20-%20Тариф%20Ultra.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -871,6 +932,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-07-01">
             <div class="change-head">
               <span>июль 2025</span>
+
             </div>
             <p>В Ozon банке появилось платное выполнение базовых условий обслуживания – за 2900 ₽ в мес.</p>
             <a href="https://cdn1.ozone.ru/s3/ob-landing/static/docs/ecom/products/rules/2026.05.18%20-%20Тариф%20Ultra.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -881,6 +943,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2024-12-01">
             <div class="change-head">
               <span>дек 2024</span>
+
             </div>
             <p>Старт премиальной программы в Ozon банке.</p>
             <a href="https://cdn1.ozone.ru/s3/ob-landing/static/docs/ecom/products/rules/2026.05.18%20-%20Тариф%20Ultra.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -897,6 +960,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-12-01">
             <div class="change-head">
               <span>дек 2025</span>
+
             </div>
             <p>Райффайзен банк убрал компенсацию ресторанов за траты 150 тыс руб.</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -907,6 +971,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-09-01">
             <div class="change-head">
               <span>сент 2025</span>
+
             </div>
             <p>Райффайзен добавил возможность компенсировать расходы на рестораны в аэропортах.</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -917,6 +982,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-08-01">
             <div class="change-head">
               <span>авг 2025</span>
+
             </div>
             <p>Райффайзен изменил перечень услуг, доступных в рамках ДМС. Теперь вместо 10 очных приемов – 10 посещений клиник, включающие врачей и процедуры, а от 5М – расширенный состав клиник. Также стал недоступен общий чекап.</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -927,6 +993,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-08-01">
             <div class="change-head">
               <span>авг 2025</span>
+
             </div>
             <p>Райффайзен изменил учет остатков: теперь остатки учитываются весь последний календарный день месяца. Ранее условие проверялось только на конец дня.</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -937,6 +1004,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-06-01">
             <div class="change-head">
               <span>июнь 2025</span>
+
             </div>
             <p>В Райффайзен Банке закончилась акция «Сейф с подарками». Вместо нее – «Привилегии на выбор».</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -947,6 +1015,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-03-01">
             <div class="change-head">
               <span>март 2025</span>
+
             </div>
             <p>Райффайзен сделал ДМС доступнее: теперь медицина с очными приемами и чекапом от 1.5М остатков (ранее – от 5М).</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -957,6 +1026,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-03-01">
             <div class="change-head">
               <span>март 2025</span>
+
             </div>
             <p>Райффайзен полностью запрещает покупку новых активов на брокерский счет.</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -967,6 +1037,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-02-01">
             <div class="change-head">
               <span>фев 2025</span>
+
             </div>
             <p>Райффайзен повышает комиссию за покупку на брокерский счет до 3% за сделку (было 1.9%).</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -977,6 +1048,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2024-10-01">
             <div class="change-head">
               <span>окт 2024</span>
+
             </div>
             <p>Райффайзен добавил возможность компенсировать БЗ от Every Lounge</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -987,6 +1059,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2024-08-01">
             <div class="change-head">
               <span>авг 2024</span>
+
             </div>
             <p>Райффайзен поднял комиссию при брокерском обслуживании для ВСЕХ тарифов до запредельных 1,9% по сделкам покупки.</p>
             <a href="https://www.raiffeisen.ru/common/img/uploaded/files/retail/package/tariffs_pakety_uslug.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -1003,6 +1076,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2026-06-01">
             <div class="change-head">
               <span>июнь 2026</span>
+
             </div>
             <p>В Т-Банке новый партнёр для доступа в бизнес-залы — Persona.aero.</p>
             <a href="https://cdn.tbank.ru/static/documents/docs-terms-of-service-premium.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -1013,6 +1087,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-11-01">
             <div class="change-head">
               <span>ноя 2025</span>
+
             </div>
             <p>Акция в Т-Банке: до 15 января 2026 уровни Diamond и Private снова могут получить годовую программу ДМС «Diamond».</p>
             <a href="https://cdn.tbank.ru/static/documents/docs-terms-of-service-premium.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -1023,6 +1098,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-09-01">
             <div class="change-head">
               <span>сент 2025</span>
+
             </div>
             <p>Т-Банк поднял стоимость обслуживания на уровне Bronze до 2990 ₽ в мес, а также добавил ДМС от «Лучи» с телемедициной, компенсацию ресторанов на уровнях Bronze и Silver в размере до 1 тыс ₽ на посадочный и компенсацию одной поездки на каршеринге до 500 ₽ на уровнях Bronze и Silver. Также появилась компенсация каршеринга для уровней Gold, Diamond и Private в рамках лимита на такси.</p>
             <a href="https://cdn.tbank.ru/static/documents/docs-terms-of-service-premium.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -1033,6 +1109,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-08-01">
             <div class="change-head">
               <span>авг 2025</span>
+
             </div>
             <p>В Т-Банке появилась возможность компенсировать ресторан по кнопке в приложении.</p>
             <a href="https://cdn.tbank.ru/static/documents/docs-terms-of-service-premium.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -1043,6 +1120,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-08-01">
             <div class="change-head">
               <span>авг 2025</span>
+
             </div>
             <p>Т-Банк понизил размер компенсации ресторанов в заграничных аэропортах до $25 (было $50) на посадочный для уровней Gold и Diamond. Для Private осталось $50. При этом действие самой акции продлено до 31 октября 2025 г.</p>
             <a href="https://cdn.tbank.ru/static/documents/docs-terms-of-service-premium.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -1053,6 +1131,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-04-01">
             <div class="change-head">
               <span>апр 2025</span>
+
             </div>
             <p>В Т-Банке стало доступно страхование имущества.</p>
             <a href="https://cdn.tbank.ru/static/documents/docs-terms-of-service-premium.pdf" target="_blank" rel="noreferrer">Источник</a>
@@ -1063,6 +1142,7 @@ h1 { margin: 0; font-size: 42px; line-height: 1.08; }
               data-date="2025-01-01">
             <div class="change-head">
               <span>янв 2025</span>
+
             </div>
             <p>Уровень «Broze» в Т-Банке стало возможно получить за покупку на брокерский счет 500 акций Т-Технологий.</p>
             <a href="https://cdn.tbank.ru/static/documents/docs-terms-of-service-premium.pdf" target="_blank" rel="noreferrer">Источник</a>
