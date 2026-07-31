@@ -2486,14 +2486,14 @@ function rankEvaluations(entries) {
   const missing = entries.filter((entry) => isMissingRankEntry(entry));
   missing.forEach((entry) => {
     results.set(entry.side, visualRankResult(
-      entry, 'missing', 'rank-low', 'нет данных',
+      entry, 'missing', 'rank-low', 'слабее',
       'Подтверждённое условие отсутствует в доступных источниках.'
     ));
   });
   if (!available.length) {
     missing.forEach((entry) => {
       results.set(entry.side, visualRankResult(
-        entry, 'equal', 'rank-mid', 'одинаково',
+        entry, 'equal', 'rank-mid', 'равно',
         'У обоих вариантов условие отсутствует или не найдено.'
       ));
     });
@@ -2511,7 +2511,7 @@ function rankEvaluations(entries) {
       || !available.every((entry) => entry.evaluation.status === 'comparable')) {
     available.forEach((entry) => {
       results.set(entry.side, visualRankResult(
-        entry, 'ambiguous', 'rank-mid', 'неоднозначно',
+        entry, 'ambiguous', 'rank-mid', 'равно',
         entry.evaluation.reason || 'Ключевые данные отсутствуют.'
       ));
     });
@@ -2525,12 +2525,10 @@ function rankEvaluations(entries) {
     const cashbackReason = cashbackAmbiguityReason(available);
     const status = comparison.status === 'ambiguous' || cashbackReason
       ? 'ambiguous' : 'insufficient';
-    const label = status === 'ambiguous'
-      ? 'неоднозначно' : 'недостаточно данных';
     const reason = cashbackReason || comparison.reason;
     available.forEach((entry) => {
       results.set(entry.side, visualRankResult(
-        entry, status, 'rank-mid', label, reason
+        entry, status, 'rank-mid', 'равно', reason
       ));
     });
     return entries.map((entry) => results.get(entry.side));
